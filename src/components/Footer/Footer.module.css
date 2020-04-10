@@ -1,0 +1,8 @@
+.Footer{
+    height: 56px;
+    width:100%;
+    position: fixed;
+    bottom: 0;
+    border: 2px solid blue;
+    /* jsut for now */ text-align: center;
+}
