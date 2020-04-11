@@ -4,3 +4,8 @@
   height:100%;
   width:100%;
 }
+
+a{
+  text-decoration: none;
+  /* can give color here to links */
+}
