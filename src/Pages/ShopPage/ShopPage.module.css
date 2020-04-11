@@ -2,4 +2,7 @@
     height: calc(100% - 56px - 56px);
     position: relative;
     top:56px;
+    padding: 2rem;
+    overflow-y: auto;
+    /* margin-bottom: 56px; */
 }

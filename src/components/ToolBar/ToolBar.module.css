@@ -1,4 +1,4 @@
-.Toolbar{
+.root{
     height:56px;
     width:100%;
     position: -webkit-sticky;
@@ -6,6 +6,32 @@
     top:0;
     left:0;
     z-index: 100;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     /* just for now  */ text-align: center;
+}
+
+.toolbar{
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo_container{
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+}
+
+.links{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.link{
+    padding:1px 15px;
+    display: flex;
+    cursor: pointer;
 }
