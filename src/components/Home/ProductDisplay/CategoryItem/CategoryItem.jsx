@@ -7,8 +7,8 @@ import Content from '../Content/Content'
 
 const useStyles = makeStyles(theme => createStyles({
     menu_item:{
-        height:'240px',
-        margin:'12px',
+        // height:'240px',
+        margin:'8px',
         minWidth:'30%',
         border : '6px solid white',
         display:'flex',
@@ -50,10 +50,15 @@ const useStyles = makeStyles(theme => createStyles({
 }))
 
 export default function Category({category}) {
+    let height = '240px';
+    if(category.size === 'big')
+    {
+        height = '280px';
+    }
     const classes = useStyles()
     return (
         <div className={classes.menu_item} >
-            <div className={classes.backGround} style={{backgroundImage:`url(${category.imgURL})`}}></div>
+            <div className={classes.backGround} style={{backgroundImage:`url(${category.imgURL})` , height : `${height}`}}></div>
             <Content category={category}/>
         </div>
     )

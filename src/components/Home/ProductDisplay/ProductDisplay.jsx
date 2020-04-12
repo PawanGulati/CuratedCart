@@ -9,7 +9,7 @@ export default function ProductDisplay(props) {
     const {categories} = props
     return (
         <div className={classes.main_display}>
-            <Container maxWidth='md'>
+            <Container>
                 <Grid container>
                 {
                     categories.map(category => (
