@@ -6,29 +6,30 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => createStyles({
     root:{
-        border:'1px solid red',
-        height:'90px',
-        width:'120px',
-        //Styting krrr
+        display : "flex",
+        alignItems : "center",
+        justifyContent : "center",
+        position  : 'absolute',
+        zIndex : '20',
+        border:'2px solid white',
+        background : "rgba(0, 0, 0, .5)",
+        padding : '0 10px',
+        borderRadius : '20px',
     },
     title:{
-        // STYLING KRRRR
+        fontFamily : "'Exo 2',sans-serif",
+        fontSize : '1.4rem',
+        textAlign : "center",
+        color : "white",
+        cursor : 'pointer',
     },
-    subtitle:{
-        // STYLING KRRRR
-    }
 }))
-
-//        CLOTHES 
-//       (SHOP IT)   
-// 
 
 export default function Content({category}) {
     const classes = useStyles()
     return (
         <div className={classes.root}>
             <Typography className={classes.title}>{category.title}</Typography>
-            <Typography className={classes.subtitle}>SHOP IT</Typography>
         </div>
     )
 }

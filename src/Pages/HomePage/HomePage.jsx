@@ -12,27 +12,27 @@ export default class HomePage extends Component {
             {
                 id:1,
                 title:'Clothes',
-                imgURL:'',
+                imgURL:'https://i.ibb.co/1LhTS6f/two-hanged-blue-stonewash-and-blue-jeans-1082528-3.jpg',
                 size:'big'
             },{
                 id:2,
                 title:'Electronics',
-                imgURL:'',
+                imgURL:'https://i.ibb.co/LrYMw9X/apple-laptop-macbook-computer-191158.jpg',
                 size:'big'
             },{
                 id:3,
                 title:'Footwear',
-                imgURL:'',
+                imgURL:'https://i.ibb.co/G3pqc89/fashion-shoes-footwear-19090.jpg',
                 size:'small'
             },{
                 id:4,
                 title:'Furniture',
-                imgURL:'',
+                imgURL:'https://i.ibb.co/xJGYJYM/architecture-beverage-chair-coffee-220749.jpg',
                 size:'small'
             },{
                 id:5,
                 title:'Watch',
-                imgURL:'',
+                imgURL:'https://i.ibb.co/NTmSMGy/black-leather-strap-silver-chronograph-watch-125779.jpg',
                 size:'small'
             }
         ]
