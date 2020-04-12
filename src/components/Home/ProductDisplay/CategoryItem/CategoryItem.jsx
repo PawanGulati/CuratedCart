@@ -10,25 +10,25 @@ const useStyles = makeStyles(theme => createStyles({
         height:'240px',
         margin:'12px',
         minWidth:'30%',
-        border : '2px solid white',
+        border : '6px solid white',
         display:'flex',
         alignItems:'center',
         justifyContent:'center',       
         backgroundRepeat : 'none',
         position : 'relative',
-        background :'white'
-        
+        background :'white',
+        overflow:'hidden',
         // Display flex vgrh use kr yha pe 
     },
     backGround : {
-        width : '98%',
-        height : '95%',
+        width : '100%',
+        height : '100%',
         backgroundSize : 'cover',
         backgroundPosition : 'center',
         position : 'relative',
-        transition : 'all .5s ease',
+        transition : 'all .3s ease',
         '&:hover':{
-            transform  : 'perspective(999px) scale(1.02) translateZ(1px)',
+            transform  : 'perspective(999px) scale(1.1) translateZ(1px)',
             '&::before' :{
                 opacity : '.2'
             }
