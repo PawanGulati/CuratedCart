@@ -1,4 +1,42 @@
 .main_display{
     height:100%;
     border: 2px solid brown;
+    padding : 2rem;
+    display: flex;
+    flex-flow: column;
+    /* background-position: ; */
+}
+
+.left_part{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column;
+    /* border: 1px solid black; */
+    height: 30rem;
+    /* margin-right : .5rem; */
+
+}
+
+.title{
+    font-size: 5rem;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    margin-left: 2rem;
+}
+
+.subTitle{
+    font-size: 2rem;
+    font-family: 'Exo 2', sans-serif;
+    margin-left: 2.3rem;
+}
+
+.right_part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    height: 30rem;
+    /* margin-left : .5rem; */
+    /* width : 40rem; */
 }
