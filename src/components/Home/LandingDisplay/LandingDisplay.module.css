@@ -1,6 +1,5 @@
 .main_display{
     height:100%;
-    border: 2px solid brown;
     padding : 2rem;
     display: flex;
     flex-flow: column;
@@ -12,6 +11,10 @@
     justify-content: center;
     align-items: flex-start;
     flex-flow: column;
+    background-image: url('https://i.ibb.co/2s3hBdV/Logo-3.jpg');
+    background-position-x: 40%;
+    background-size: 9rem;
+    background-repeat: no-repeat;
     /* border: 1px solid black; */
     height: 30rem;
     /* margin-right : .5rem; */
@@ -23,12 +26,17 @@
     font-family: 'Dosis', sans-serif;
     font-weight: 500;
     margin-left: 2rem;
+    position: relative;
+    background: transparent;
 }
 
 .subTitle{
     font-size: 2rem;
     font-family: 'Exo 2', sans-serif;
+    position: relative;
     margin-left: 2.3rem;
+    background: transparent;
+
 }
 
 .right_part{
