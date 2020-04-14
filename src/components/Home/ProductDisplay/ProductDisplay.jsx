@@ -13,7 +13,7 @@ export default function ProductDisplay(props) {
                 <Grid container>
                 {
                     categories.map(category => (
-                        <Grid item xs={12} sm={category.size === 'big' ? 6 : 4}>
+                        <Grid item xs={12} sm={category.size === 'big' ? 6 : 4} key={category.id}>
                             <CategoryItem category={category}/>
                         </Grid>
                     ))
