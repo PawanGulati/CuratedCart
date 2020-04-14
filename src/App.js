@@ -6,6 +6,7 @@ import Layout from './containers/Layout';
 import HomePage from './Pages/HomePage/HomePage'
 import ShopPage from './Pages/ShopPage/ShopPage';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import AuthPage from './Pages/AuthPage/AuthPage';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
     <CssBaseline />
       <Layout>
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/shop' component={ShopPage} />
+        <Route exact path='/auth' component={AuthPage} />
+        <Route exact path='/shop' component={ShopPage} />
+        <Route exact path='/' component={HomePage} />
         </Switch>
       </Layout>
     </div>
