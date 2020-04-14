@@ -13,25 +13,25 @@
     flex-flow: column;
     background-image: url('https://i.ibb.co/2s3hBdV/Logo-3.jpg');
     background-position-x: 40%;
-    background-size: 7.5rem;
+    background-size: 9vw;
     background-repeat: no-repeat;
     height: 100%;
 }
 
 .title{
-    font-size: 5rem;
+    font-size: 50px;
     font-family: 'Dosis', sans-serif;
     font-weight: 500;
-    margin-left: 2rem;
+    margin:  0 0 0 2rem;
     position: relative;
     background: transparent;
 }
 
 .subTitle{
-    font-size: 2rem;
+    font-size: 20px;
     font-family: 'Exo 2', sans-serif;
     position: relative;
-    margin-left: 2.3rem;
+    margin: 0 0 0 2.3rem;
     background: transparent;
 
 }
@@ -44,5 +44,28 @@
     background-image : url("https://i.ibb.co/jzYSmJY/shopping-cart-colour-400px.png"); 
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 30rem;
+    background-size: 80% ;
+}
+
+
+@media (max-width : 500px){
+    .left_part{
+        background-size: 30vw;
+        justify-content: center;
+        align-items: center;
+        background-position-x: 50%;
+    }
+    
+    .title{
+        margin: 0;
+        font-size: 12vw;
+    }
+
+    .subTitle{
+        margin: 0;
+    }
+
+    .right_part{
+        background-size: 100% ;
+    }
 }
