@@ -15,8 +15,10 @@ import Container from '@material-ui/core/Container';
 
 import classes from './SignIn.module.css'
 
-export default class SignIn extends Component {
+import {signInWithGoogle} from '../../../firebase/firebase.utils'
 
+export default class SignIn extends Component {
+    
     state={
         email:'',
         password:''
@@ -89,6 +91,16 @@ export default class SignIn extends Component {
                         className={classes.submit}
                     >
                         Sign In
+                    </Button>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="secondary"
+                        className={classes.submit}
+                        onClick={signInWithGoogle}
+                    >
+                        Sign In With Google
                     </Button>
                     <Grid container>
                         <Grid item xs>
