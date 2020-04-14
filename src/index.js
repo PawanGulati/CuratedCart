@@ -7,6 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
 import {MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
+// REDUX implementation
+import {Provider} from 'react-redux'
+import store from './store'
+
 const theme = createMuiTheme({
   palette : {
     main : '#E8E8CF'
@@ -21,7 +25,9 @@ const app = (
   <BrowserRouter>
     <React.StrictMode>
       <MuiThemeProvider theme={theme}>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </MuiThemeProvider>
     </React.StrictMode>
   </BrowserRouter> 
