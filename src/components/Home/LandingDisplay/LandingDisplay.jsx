@@ -27,18 +27,3 @@ export default function LandingDisplay() {
         </div>
     )
 }
-
-// <div 
-// style={{
-//     height : '96%',
-//     width : '90.5%',
-//     position : 'relative',
-//     top : '5%',
-//     left : '-10%',
-//     backgroundImage : 'url("https://i.ibb.co/jzYSmJY/shopping-cart-colour-400px.png")', 
-//     backgroundImage : 'url("https://i.ibb.co/bXJJXDY/shopping-cart-colour-800px-1.png")',
-//     backgroundImage : 'url(" https://i.ibb.co/JjNvVwL/shopping-cart-colour-800px-1.jpg")', 
-//     backgroundRepeat : 'no-repeat',
-//     backgroundSize : 'cover',
-//     backgroundPosition : 'center'
-// }}></div>

@@ -13,13 +13,13 @@
     flex-flow: column;
     background-image: url('https://i.ibb.co/2s3hBdV/Logo-3.jpg');
     background-position-x: 40%;
-    background-size: 20%;
+    background-size: 28%;
     background-repeat: no-repeat;
     height: 100%;
 }
 
 .title{
-    font-size: 55px;
+    font-size: 75px;
     font-family: 'Dosis', sans-serif;
     font-weight: 500;
     margin:  0 0 0 2rem;
@@ -28,7 +28,7 @@
 }
 
 .subTitle{
-    font-size: 24px;
+    font-size: 34px;
     font-family: 'Exo 2', sans-serif;
     position: relative;
     margin: 0 0 0 2.3rem;

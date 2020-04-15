@@ -17,8 +17,11 @@ const useStyles = makeStyles(theme => createStyles({
         borderRadius : '20px',
     },
     title:{
+        fontSize : '3vw',
+        [theme.breakpoints.up('md')]:{
+            fontSize : '1.5vw',
+        },
         fontFamily : "'Exo 2',sans-serif",
-        fontSize : '90%',
         textAlign : "center",
         color : "white",
         cursor : 'pointer',
