@@ -8,6 +8,9 @@ import Link  from '@material-ui/core/Link';
 import ShopIcon from '@material-ui/icons/Shop';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+import {auth} from '../../firebase/firebase.utils'
+import { connect } from 'react-redux';
+
 const links = (
     <div className={classes.links}>
         <Link href='#' underline="none" className={classes.link} color="inherit">
@@ -16,9 +19,9 @@ const links = (
         <Link href='#' underline="none" className={classes.link} color="inherit">
             <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>Product</Typography>
         </Link>
-        <Link href='/auth' underline="none" className={classes.link} color="inherit">
+        <Link onClick={() =>auth().signOut() } underline="none" className={classes.link} color="inherit">
             <ExitToAppIcon/>
-            <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>SignIn</Typography>
+            <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>Logout</Typography>
         </Link>
         <Link href='/auth' underline="none" className={classes.link} color="inherit">
             <ShopIcon fontSize='large'/>
@@ -26,7 +29,11 @@ const links = (
     </div>
 )
 
-export default props => {
+const mapStateToProps = state =>({
+    currentUser:state.user.currentUser
+})
+
+export default connect(mapStateToProps)(props => {
     return (
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
@@ -37,4 +44,4 @@ export default props => {
             </AppBar>
         </div>
     )
-}
+})
