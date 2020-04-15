@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import classes from './SignIn.module.css'
 
 import {signInWithGoogle} from '../../../firebase/firebase.utils'
+import {auth} from '../../../firebase/firebase.utils' 
 
 export default class SignIn extends Component {
     
@@ -28,15 +29,22 @@ export default class SignIn extends Component {
         })
     }
 
-    submitHandler = e =>{
+    submitHandler = async e =>{
         e.preventDefault()
 
-        console.log(this.state);
+        const {email,password} = this.state
         
-        this.setState({
-            email:'',
-            password:''
-        })
+        try {
+            await auth().signInWithEmailAndPassword(email,password)
+
+            //clearing form
+            this.setState({
+                email:'',
+                password:''
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render(){
