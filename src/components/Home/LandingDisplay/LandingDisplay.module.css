@@ -13,7 +13,7 @@
     flex-flow: column;
     background-image: url('https://i.ibb.co/2s3hBdV/Logo-3.jpg');
     background-position-x: 40%;
-    background-size: 9vw;
+    background-size: 20%;
     background-repeat: no-repeat;
     height: 100%;
 }
@@ -50,9 +50,9 @@
 
 @media (max-width : 500px){
     .left_part{
-        background-size: 30vw;
+        background-size: 40vw;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         background-position-x: 50%;
     }
@@ -67,7 +67,4 @@
         font-size: 4vw;
     }
 
-    .right_part{
-        background-size: 80% ;
-    }
 }
