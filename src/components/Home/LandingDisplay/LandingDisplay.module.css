@@ -19,7 +19,7 @@
 }
 
 .title{
-    font-size: 50px;
+    font-size: 55px;
     font-family: 'Dosis', sans-serif;
     font-weight: 500;
     margin:  0 0 0 2rem;
@@ -28,7 +28,7 @@
 }
 
 .subTitle{
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'Exo 2', sans-serif;
     position: relative;
     margin: 0 0 0 2.3rem;
@@ -51,21 +51,23 @@
 @media (max-width : 500px){
     .left_part{
         background-size: 30vw;
+        display: flex;
         justify-content: center;
         align-items: center;
         background-position-x: 50%;
     }
     
     .title{
-        margin: 0;
+        margin:  0;
         font-size: 12vw;
     }
 
     .subTitle{
         margin: 0;
+        font-size: 4vw;
     }
 
     .right_part{
-        background-size: 100% ;
+        background-size: 80% ;
     }
 }

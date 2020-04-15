@@ -13,14 +13,13 @@ export default function LandingDisplay() {
                     
                 <Grid item xs = {12} sm={6}>
                         <div className={classes.left_part}>
-                        <p className={classes.title}>Curated Cart</p>
-                        <p className={classes.subTitle}>REASON OF YOUR HAPPINESS</p>
+                            <p className={classes.title}>Curated Cart</p>
+                            <p className={classes.subTitle}>REASON OF YOUR HAPPINESS</p>
                         </div>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
                         <div className={classes.right_part}>
-                            
                         </div>
                     </Grid>
                 </Grid>
