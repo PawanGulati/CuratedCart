@@ -13,12 +13,12 @@ export default class HomePage extends Component {
                 id:1,
                 title:'Clothes',
                 imgURL:'https://i.ibb.co/1LhTS6f/two-hanged-blue-stonewash-and-blue-jeans-1082528-3.jpg',
-                size:'big'
+                size:'small'
             },{
                 id:2,
                 title:'Electronics',
                 imgURL:'https://i.ibb.co/LrYMw9X/apple-laptop-macbook-computer-191158.jpg',
-                size:'big'
+                size:'small'
             },{
                 id:3,
                 title:'Footwear',
@@ -34,6 +34,11 @@ export default class HomePage extends Component {
                 title:'Watch',
                 imgURL:'https://i.ibb.co/NTmSMGy/black-leather-strap-silver-chronograph-watch-125779.jpg',
                 size:'small'
+            },{
+                id : 6,
+                title : 'Hats',
+                imgURL : 'https://i.ibb.co/hRP6k7R/four-brown-straw-hats-display-1078973.jpg',
+                size : 'small'
             }
         ]
     }

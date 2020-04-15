@@ -9,14 +9,17 @@ export default function ProductDisplay(props) {
     const {categories} = props
     return (
         <div className={classes.main_display}>
-            <Container>
-                <Grid container>
+            <Container style={{height : '100%'}}>
+                <Grid container justify="space-between" style={{height : '100%'}} spacing={1} >
                 {
-                    categories.map(category => (
-                        <Grid item xs={12} sm={category.size === 'big' ? 6 : 4} key={category.id}>
-                            <CategoryItem category={category}/>
-                        </Grid>
-                    ))
+                    categories.map(category => {
+                        
+                        return(
+                            <Grid item xs={6} sm={category.size === 'big' ? 6 : 4} >
+                                <CategoryItem category={category}/>
+                            </Grid>
+                    )
+                    })
                 }
                 </Grid>
             </Container>
