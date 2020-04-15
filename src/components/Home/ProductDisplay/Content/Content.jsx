@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => createStyles({
     },
     title:{
         fontFamily : "'Exo 2',sans-serif",
-        fontSize : '1.4rem',
+        fontSize : '90%',
         textAlign : "center",
         color : "white",
         cursor : 'pointer',
