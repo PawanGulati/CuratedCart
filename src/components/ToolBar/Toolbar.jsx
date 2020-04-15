@@ -14,14 +14,14 @@ import { connect } from 'react-redux';
 const links = (
     <div className={classes.links}>
         <Link href='#' underline="none" className={classes.link} color="inherit">
-            <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>Shop</Typography>
+            <Typography variant='body1' style={{margin:'2px',fontWeight:500, fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
         </Link>
         <Link href='#' underline="none" className={classes.link} color="inherit">
-            <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>Product</Typography>
+            <Typography variant='body1' style={{margin:'2px',fontWeight:500,fontFamily:'"Dosis",sans-serif'}}>Product</Typography>
         </Link>
         <Link onClick={() =>auth().signOut() } underline="none" className={classes.link} color="inherit">
             <ExitToAppIcon/>
-            <Typography variant='body1' style={{margin:'2px',fontWeight:500}}>Logout</Typography>
+            <Typography variant='body1' style={{margin:'2px',fontWeight:500,fontFamily:'"Dosis",sans-serif'}}>Logout</Typography>
         </Link>
         <Link href='/auth' underline="none" className={classes.link} color="inherit">
             <ShopIcon fontSize='large'/>
@@ -38,7 +38,7 @@ export default connect(mapStateToProps)(props => {
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
                 <Toolbar className={classes.toolbar}>
-                    <div className={classes.logo_container}>LOGO</div>{/* <Logo /> will be here */}
+                    <div className={classes.logo_container}>Curated Cart</div>{/* <Logo /> will be here */}
                     {links}                
                 </Toolbar>
             </AppBar>
