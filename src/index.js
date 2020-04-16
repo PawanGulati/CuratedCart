@@ -13,12 +13,10 @@ import store from './store'
 
 const theme = createMuiTheme({
   palette : {
-    main : '#E8E8CF'
-  },
-  secondary : {
-    main : '#FFFFFF'
-  },
-  type : 'light'
+    primary:{
+      main:'#c4c49d'
+    }
+  }
 })
 
 const app = (

@@ -11,7 +11,7 @@ export default function LandingDisplay() {
             <Container style={{height : "100%"}}>
                 <Grid container style={{height : "100%"}}>
                     
-                <Grid item xs = {12} sm={6}>
+                    <Grid item xs = {12} sm={6}>
                         <div className={classes.left_part}>
                             <p className={classes.title}>Curated Cart</p>
                             <p className={classes.subTitle}>REASON OF YOUR HAPPINESS</p>
