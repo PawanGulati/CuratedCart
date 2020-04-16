@@ -26,14 +26,15 @@ const useStyles = makeStyles(theme =>({
     }
 }))
 
-export default function CartItem() {
+export default function CartItem(props) {
     const classes = useStyles()
+    console.log(props)
     return (
         <div className={classes.root}>
-            <img style={{width:'40%'}} />
+            <img src={props.imageURL} style={{width:'40%'}} />
             <div className={classes.itemDetail}>
-                <span className={classes.item_name}></span>
-                <span className={classes.item_price}></span>
+                <span className={classes.item_name}>{props.name}</span>
+                <span className={classes.item_price}>{props.price}</span>
             </div>
         </div>
     )

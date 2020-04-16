@@ -39,19 +39,26 @@ const mapStateToProps = ({cart:{cartItems}}) =>({
 
 export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
     const classes = useStyles()
-    
-    const items = {
+    console.log(cartItems)
+    const items = [];
         if(cartItems){
-            
+            for(let item in cartItems)
+            {
+                items.push(cartItems[item]);
+            }
         }
-    }
+    
 
+    console.log(items)
     return (
         <div className={classes.cart_drop}>
             <div className={classes.cart_items}>
-                <CartItem />
-                <CartItem />
-                <CartItem />
+
+                {
+                    items.map(item=>{
+                        return (<CartItem {...item}/>)
+                    })
+                }
             </div>
             <Button variant='outline' color='primary' className={classes.check_butt}>Check Me Out</Button>
         </div>
