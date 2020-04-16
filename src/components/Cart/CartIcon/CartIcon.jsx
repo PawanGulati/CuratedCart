@@ -34,13 +34,17 @@ const useStyles = makeStyles(theme =>({
     }
 }))
 
-export default connect(null)(function CartIcon({dispatch}) {
+const mapStateToProps = ({cart:{cartItemCount}}) =>({
+    cartItemCount
+})
+
+export default connect(mapStateToProps)(function CartIcon({dispatch,cartItemCount}) {
     const classes = useStyles()
 
     return (
         <div className={classes.cart_icon} onClick={()=>dispatch(toggleDrop())}>
             <BagIcon className={classes.bag_icon} />         
-            <span className={classes.item_count}>0</span>
+            <span className={classes.item_count}>{cartItemCount}</span>
         </div>
     )
 })

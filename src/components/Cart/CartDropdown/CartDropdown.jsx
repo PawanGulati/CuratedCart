@@ -2,15 +2,17 @@ import React from 'react'
 
 import {makeStyles} from '@material-ui/core'
 import Button from '@material-ui/core/Button'
+import CartItem from '../CartItem/CartItem'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme =>({
     cart_drop:{
         height:'340px',
         width:'240px',
         position:'absolute',
-        top:'58px',
-        right:0,
-        zIndex:5,
+        top:'60px',
+        right:'.5rem',
+        zIndex:100,
         border:'1px solid black',
         background:'white',
         display:'flex',
@@ -22,7 +24,8 @@ const useStyles = makeStyles(theme =>({
         display:'flex',
         flexDirection:'column',
         overflow:'auto',
-        border:'1px solid black'
+        border:'1px solid black',
+        padding:'.5rem .5rem 0 .5rem'
     },
     check_butt:{
         marginTop:'auto',
@@ -30,13 +33,27 @@ const useStyles = makeStyles(theme =>({
     }
 })) 
 
-export default function CartDropdown() {
+const mapStateToProps = ({cart:{cartItems}}) =>({
+    cartItems
+})
+
+export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
     const classes = useStyles()
     
+    const items = {
+        if(cartItems){
+            
+        }
+    }
+
     return (
         <div className={classes.cart_drop}>
-            <div className={classes.cart_items} />
+            <div className={classes.cart_items}>
+                <CartItem />
+                <CartItem />
+                <CartItem />
+            </div>
             <Button variant='outline' color='primary' className={classes.check_butt}>Check Me Out</Button>
         </div>
     )
-}
+})
