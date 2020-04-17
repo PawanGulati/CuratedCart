@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import {addCartItem} from '../../../store/cart/cart.action'
 import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import LocalMallIcon from '@material-ui/icons/LocalMall';
 
 const useStyles = makeStyles(theme => createStyles({
     main_display:{
@@ -14,12 +14,37 @@ const useStyles = makeStyles(theme => createStyles({
         flexFlow : 'column',
         margin : '5px 0 0 0',
     },
-
+    
     item_image :{
         height : '80%',
         width : '90%',
         backgroundPosition : 'center',
         backgroundSize:'cover',
+        border:'3px solid #E8E8CF',
+        position : 'relative',
+        display : 'flex',
+        alignItems : 'center',
+        justifyContent : 'center',
+        
+        '&:hover':{
+            '&::before' :{
+                opacity : '.4'
+            },
+            '& $add_to_cart' :{
+                opacity : '1'
+            },
+        },
+
+        '&::before' : {
+            height : '100%',
+            width : '100%',
+            content : '""',
+            position : 'absolute',
+            backgroundColor : 'black',
+            opacity : '0',
+            zIndex : '1',
+            transition : 'all .3s ease-in-out',
+        },
        
     },
     item_details:{
@@ -27,16 +52,18 @@ const useStyles = makeStyles(theme => createStyles({
         width : '90%',
         background : '#E8E8CF'
     },
-    item_title :{
+    item_name :{
         fontFamily:'"Exo 2",sans-serif',
         fontSize : '3vw',
         [theme.breakpoints.up('md')]:{
             fontSize : '1.2vw'
         },
+        fontWeight : 'bold',
     },
     item_price:{
         display :'flex',
         flexFlow : 'row',
+        fontWeight : 'bold',
         justifyContent :'space-between',
         fontSize : '3vw',
         [theme.breakpoints.up('md')]:{
@@ -45,10 +72,14 @@ const useStyles = makeStyles(theme => createStyles({
     },
     add_to_cart:{
         cursor:'pointer',
-        fontSize : 'small',
+        fontSize : '40px',
         [theme.breakpoints.up('md')]:{
-            fontSize : 'large'
+            fontSize : '60px'
         },
+        zIndex : '2',
+        opacity : '0',
+        transition : 'all .3s ease-in-out',
+        color :'#FFFFFF',
     }
     
     
@@ -59,16 +90,19 @@ export default connect()(function PreviewItem({dispatch,name,imageURL,price}) {
     let item = {name,imageURL,price}
     return (
         <div className={classes.main_display}> {/* can take height of 100% */} 
-        <div className={classes.item_image} style={{backgroundImage : `url(${imageURL})`}}/> {/* FOR IMAGE  (could be like height of 95%) */}
+        <div className={classes.item_image} style={{backgroundImage : `url(${imageURL})`}}>
+            <LocalMallIcon className={classes.add_to_cart} onClick={()=>dispatch(addCartItem(item))}/>
+        </div> {/* FOR IMAGE  (could be like height of 95%) */}
         <div className={classes.item_details}>
-            <Typography className={classes.item_title}>{name}</Typography>                
+            <Typography className={classes.item_name}>{name}</Typography>                
             <div className={classes.item_price}>
-                <span>₹{price}</span>
-                <AddShoppingCartIcon className={classes.add_to_cart} onClick={()=>dispatch(addCartItem(item))}/>
-            </div>
-        </div>
-        </div>
-    )
-})
-
-
+                <span>₹{price.toLocaleString()}</span>
+                </div>
+                </div>
+                </div>
+                )
+            })
+            
+            
+            
+            // <AddShoppingCartIcon className={classes.add_to_cart} onClick={()=>dispatch(addCartItem(item))}/>

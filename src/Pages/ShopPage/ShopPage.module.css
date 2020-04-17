@@ -6,3 +6,16 @@
     overflow-y: auto;
     /* margin-bottom: 56px; */
 }
+
+.title{
+    font-family: 'Dosis',sans-serif;
+    font-size: 4vw;
+    text-align: center;
+}
+
+
+@media(max-width : 500px){
+    .title{
+        font-size: 8vw;
+    }
+}

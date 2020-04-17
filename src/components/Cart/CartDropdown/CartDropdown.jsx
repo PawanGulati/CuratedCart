@@ -17,19 +17,33 @@ const useStyles = makeStyles(theme =>({
         background:'white',
         display:'flex',
         flexDirection:'column',
-        padding:'20px'
+        padding:'10px'
     },
     cart_items:{
         height:'240px',
         display:'flex',
         flexDirection:'column',
         overflow:'auto',
-        border:'1px solid black',
+        // border:'1px solid black',
         padding:'.5rem .5rem 0 .5rem'
     },
     check_butt:{
+        width : '100%',
         marginTop:'auto',
-        border:'1px solid black',
+        borderRadius : '8px',
+        color : 'white',
+        fontWeight : 'bolder',
+        fontSize :'17px'
+    },
+    checkout:{
+        borderTop : '2px solid black',
+        fontSize : '24px',
+        width : '100%',
+        height : '70px',
+        display : 'flex',
+        flexFlow : 'column',
+        alignItems : 'flex-start',
+        zInde : '2'
     }
 })) 
 
@@ -38,13 +52,17 @@ const mapStateToProps = ({cart:{cartItems}}) =>({
 })
 
 export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
-    const classes = useStyles()
+    const classes = useStyles();
+    let totalPrice=0;
     console.log(cartItems)
     const items = [];
         if(cartItems){
             for(let item in cartItems)
             {
                 items.push(cartItems[item]);
+                console.log(+(cartItems[item].price));
+                
+                totalPrice = totalPrice + (cartItems[item].price);
             }
         }
     
@@ -53,14 +71,16 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
     return (
         <div className={classes.cart_drop}>
             <div className={classes.cart_items}>
-
                 {
                     items.map(item=>{
                         return (<CartItem {...item}/>)
                     })
                 }
             </div>
-            <Button variant='outline' color='primary' className={classes.check_butt}>Check Me Out</Button>
+            <div className={classes.checkout}>
+                <span>Total: ₹{totalPrice.toLocaleString()}</span>
+                <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
+            </div>
         </div>
     )
 })
