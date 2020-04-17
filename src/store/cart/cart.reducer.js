@@ -2,11 +2,10 @@ import {TOGGLE_DROP, ADD_ITEM} from './cart.types'
 
 const initial_state = {
     drop_hide:false,
-    cartItems:[], // item > { item: , quantity: }
+    cartItems:[], 
     cartItemCount:0
 }
 
-// adding multiple cart item
 const addItemToCart = (cartItems,cartItem) =>{
     const itemExists = cartItems.find(item => item.id === cartItem.id)
 
@@ -30,7 +29,7 @@ const cartReducer = (state=initial_state,action) =>{
         case ADD_ITEM:
             return{
                 ...state,
-                cartItems:[...state.cartItems,action.item],
+                cartItems : addItemToCart(state.cartItems,action.item),
                 cartItemCount: state.cartItemCount + 1
             }    
         default:

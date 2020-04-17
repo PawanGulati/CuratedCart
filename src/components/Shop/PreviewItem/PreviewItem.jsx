@@ -1,7 +1,6 @@
 import React from 'react'
 import createStyles from '@material-ui/core/styles/createStyles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import {addCartItem} from '../../../store/cart/cart.action'
 import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
 import LocalMallIcon from '@material-ui/icons/LocalMall';
@@ -85,24 +84,21 @@ const useStyles = makeStyles(theme => createStyles({
     
 }))
 
-export default connect()(function PreviewItem({dispatch,name,imageURL,price}) {
+export default function PreviewItem({name,imageURL,price,addCartItem}) {
     const classes=useStyles();
-    let item = {name,imageURL,price}
+    // let item = {id,name,imageURL,price}
     return (
-        <div className={classes.main_display}> {/* can take height of 100% */} 
-        <div className={classes.item_image} style={{backgroundImage : `url(${imageURL})`}}>
-            <LocalMallIcon className={classes.add_to_cart} onClick={()=>dispatch(addCartItem(item))}/>
-        </div> {/* FOR IMAGE  (could be like height of 95%) */}
-        <div className={classes.item_details}>
-            <Typography className={classes.item_name}>{name}</Typography>                
-            <div className={classes.item_price}>
-                <span>₹{price.toLocaleString()}</span>
-                </div>
-                </div>
-                </div>
-                )
-            })
+        <div className={classes.main_display}> 
+            <div className={classes.item_image} style={{backgroundImage : `url(${imageURL})`}}>
+                 <LocalMallIcon className={classes.add_to_cart} onClick={addCartItem}/>
+            </div> 
+            <div className={classes.item_details}>
+                <Typography className={classes.item_name}>{name}</Typography>                
+                <span className={classes.item_price}>₹{price.toLocaleString()}</span>
+            </div>
+        </div>
+    )
+}
             
             
             
-            // <AddShoppingCartIcon className={classes.add_to_cart} onClick={()=>dispatch(addCartItem(item))}/>

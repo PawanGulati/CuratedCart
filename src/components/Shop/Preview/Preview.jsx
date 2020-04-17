@@ -4,7 +4,9 @@ import Typography from '@material-ui/core/Typography'
 import createStyles from '@material-ui/core/styles/createStyles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Container, Grid } from '@material-ui/core'
-
+import {addCartItem} from '../../../store/cart/cart.action'
+import {connect} from 'react-redux'
+ 
 const useStyles = makeStyles(theme => createStyles({
     main_display:{
         height : '100%', 
@@ -24,7 +26,7 @@ const useStyles = makeStyles(theme => createStyles({
 }))
 
 
-export default function Preview({items, title}) {
+export default connect()(function Preview({dispatch,items, title}) {
     const classes = useStyles()
     return (
         <section className={classes.main_display}>
@@ -38,7 +40,7 @@ export default function Preview({items, title}) {
                         .map(({id , ...rest})  =>{
                             return(
                                 <Grid xs={6} sm={3} >
-                                    <PreviewItem key={id} {...rest} />
+                                    <PreviewItem key={id} {...rest} addCartItem={()=>dispatch(addCartItem({id,...rest}))}/>
                                 </Grid>
                         )})
                     }
@@ -47,3 +49,4 @@ export default function Preview({items, title}) {
         </section>
     )
 }
+)
