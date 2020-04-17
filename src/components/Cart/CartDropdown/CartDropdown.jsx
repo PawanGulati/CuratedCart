@@ -4,6 +4,8 @@ import {makeStyles} from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import CartItem from '../CartItem/CartItem'
 import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { selectCartItems, selectCartTotalPrice } from '../../../store/cart/cart.selector'
 
 const useStyles = makeStyles(theme =>({
     cart_drop:{
@@ -55,9 +57,9 @@ const useStyles = makeStyles(theme =>({
     }
 })) 
 
-const mapStateToProps = ({cart:{cartItems,cartTotalPrice}}) =>({
-    cartItems,
-    cartTotalPrice
+const mapStateToProps = createStructuredSelector({
+    cartItems:selectCartItems,
+    cartTotalPrice:selectCartTotalPrice
 })
 
 export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice}) {

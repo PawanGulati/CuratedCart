@@ -4,6 +4,8 @@ import {makeStyles} from '@material-ui/core'
 
 import { connect } from 'react-redux'
 import {toggleDrop} from '../../../store/cart/cart.action'
+import { createStructuredSelector } from 'reselect'
+import { selectCartItemCount } from '../../../store/cart/cart.selector'
 
 const useStyles = makeStyles(theme =>({
     cart_icon:{
@@ -34,8 +36,8 @@ const useStyles = makeStyles(theme =>({
     }
 }))
 
-const mapStateToProps = ({cart:{cartItemCount}}) =>({
-    cartItemCount
+const mapStateToProps = createStructuredSelector({
+    cartItemCount:selectCartItemCount
 })
 
 export default connect(mapStateToProps)(function CartIcon({dispatch,cartItemCount}) {

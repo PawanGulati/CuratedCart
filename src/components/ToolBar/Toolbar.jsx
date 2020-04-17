@@ -12,6 +12,9 @@ import {auth} from '../../firebase/firebase.utils'
 import { connect } from 'react-redux';
 import CartIcon from '../Cart/CartIcon/CartIcon';
 import CartDropdown from '../Cart/CartDropdown/CartDropdown';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../store/user/user.selector';
+import { selectDropToggle } from '../../store/cart/cart.selector';
 
 const links = (
     <div className={classes.links}>
@@ -29,9 +32,9 @@ const links = (
     </div>
 )
 
-const mapStateToProps = ({user:{currentUser},cart:{drop_hide}}) =>({
-    currentUser,
-    drop_hide
+const mapStateToProps = createStructuredSelector({
+    currentUser:selectCurrentUser,
+    drop_hide:selectDropToggle
 })
 
 export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
