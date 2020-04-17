@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme =>({
         top:'60px',
         right:'.5rem',
         zIndex:100,
-        border:'1px solid black',
+        // border:'1px solid black',
+        boxShadow:'1px 2px 25px 5px rgba(0,0,0,.4)',
         background:'white',
         display:'flex',
         flexDirection:'column',
@@ -44,6 +45,13 @@ const useStyles = makeStyles(theme =>({
         flexFlow : 'column',
         alignItems : 'flex-start',
         zInde : '2'
+    },
+    message :{
+        height : '100%' ,
+        display:'flex',
+        flexFlow : 'column', 
+        alignItems : 'center',
+        justifyContent : 'center'
     }
 })) 
 
@@ -62,21 +70,39 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
                 totalPrice = totalPrice + (cartItems[item].price)*(cartItems[item].quantity);
             }
     }
+  
+    let content = 
+        <div className={classes.message}>
+            <div style={{fontSize:'25px',fontWeight :'bold'}}>
+                Hey, it feels so light!
+            </div>
+            <div>
+                Let's add some items.
+            </div>
+        </div>;
     
+    if(items.length)
+    {
+        content = (
+            <div>
+            <div className={classes.cart_items}>
+            {
+                items.map(item=>{
+                    return (<CartItem {...item}/>)
+                })
+            }
+        </div>
+        <div className={classes.checkout}>
+            <span>Total: ₹{totalPrice.toLocaleString()}</span>
+            <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
+        </div>
+        </div>)
+    }
 
     return (
+        
         <div className={classes.cart_drop}>
-            <div className={classes.cart_items}>
-                {
-                    items.map(item=>{
-                        return (<CartItem {...item}/>)
-                    })
-                }
-            </div>
-            <div className={classes.checkout}>
-                <span>Total: ₹{totalPrice.toLocaleString()}</span>
-                <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
-            </div>
+            {content}
         </div>
     )
 })
