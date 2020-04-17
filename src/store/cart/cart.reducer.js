@@ -3,7 +3,8 @@ import {TOGGLE_DROP, ADD_ITEM} from './cart.types'
 const initial_state = {
     drop_hide:false,
     cartItems:[], 
-    cartItemCount:0
+    cartItemCount:0,
+    cartTotalPrice:0
 }
 
 const addItemToCart = (cartItems,cartItem) =>{
@@ -30,7 +31,8 @@ const cartReducer = (state=initial_state,action) =>{
             return{
                 ...state,
                 cartItems : addItemToCart(state.cartItems,action.item),
-                cartItemCount: state.cartItemCount + 1
+                cartItemCount: state.cartItemCount + 1,
+                cartTotalPrice: state.cartTotalPrice + action.item.price
             }    
         default:
             return state

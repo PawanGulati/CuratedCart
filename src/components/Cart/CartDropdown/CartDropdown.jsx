@@ -55,21 +55,22 @@ const useStyles = makeStyles(theme =>({
     }
 })) 
 
-const mapStateToProps = ({cart:{cartItems}}) =>({
-    cartItems
+const mapStateToProps = ({cart:{cartItems,cartTotalPrice}}) =>({
+    cartItems,
+    cartTotalPrice
 })
 
-export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
+export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice}) {
     const classes = useStyles();
-    let totalPrice=0;
-    const items = [];
-        if(cartItems){
-            for(let item in cartItems)
-            {
-                items.push(cartItems[item]);
-                totalPrice = totalPrice + (cartItems[item].price)*(cartItems[item].quantity);
-            }
-    }
+    // let totalPrice=0;
+    // const items = [];
+    //     if(cartItems){
+    //         for(let item in cartItems)
+    //         {
+    //             items.push(cartItems[item]);
+    //             totalPrice = totalPrice + (cartItems[item].price)* (cartItems[item].quantity);
+    //         }
+    // }
   
     let content = 
         <div className={classes.message}>
@@ -81,19 +82,19 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems}) {
             </div>
         </div>;
     
-    if(items.length)
+    if(cartItems.length)
     {
         content = (
             <div>
             <div className={classes.cart_items}>
             {
-                items.map(item=>{
+                cartItems.map(item=>{
                     return (<CartItem {...item}/>)
                 })
             }
         </div>
         <div className={classes.checkout}>
-            <span>Total: ₹{totalPrice.toLocaleString()}</span>
+            <span>Total: ₹{cartTotalPrice}</span>
             <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
         </div>
         </div>)
