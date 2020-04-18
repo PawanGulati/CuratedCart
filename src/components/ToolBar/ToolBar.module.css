@@ -1,7 +1,6 @@
 .root{
     height:56px;
     width:100%;
-    position: -webkit-sticky;
     position: fixed;
     top:0;
     left:0;

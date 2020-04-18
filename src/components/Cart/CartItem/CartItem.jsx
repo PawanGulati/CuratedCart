@@ -38,7 +38,7 @@ export default function CartItem(props) {
             <div style={{backgroundImage : `url(${props.imageURL})`}} className={classes.item_image}></div>
             <div className={classes.itemDetail}>
                 <span className={classes.item_name}>{props.name.substring(0,15)}....</span>
-                <span className={classes.item_price}>₹{props.price.toLocaleString()} * {props.quantity}</span>
+                <span className={classes.item_price}>₹{props.price.toLocaleString()} x {props.quantity}</span>
             </div>
             </div>
         )

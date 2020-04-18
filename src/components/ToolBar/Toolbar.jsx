@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link  from '@material-ui/core/Link';
-import ShopIcon from '@material-ui/icons/Shop';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import {auth} from '../../firebase/firebase.utils'

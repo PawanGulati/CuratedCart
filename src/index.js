@@ -9,7 +9,10 @@ import {MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
 // REDUX implementation
 import {Provider} from 'react-redux'
-import store from './store'
+import {store,persistor} from './store'
+
+// REDUX-persist
+import {PersistGate} from 'redux-persist/integration/react'
 
 const theme = createMuiTheme({
   palette : {
@@ -23,9 +26,11 @@ const app = (
   <BrowserRouter>
     <React.StrictMode>
       <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <PersistGate persistor={persistor}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </PersistGate>
       </MuiThemeProvider>
     </React.StrictMode>
   </BrowserRouter> 

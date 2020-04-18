@@ -39,8 +39,8 @@ export default connect()(function Preview({dispatch,items, title}) {
                         .filter(( _ , i) =>i < 4)
                         .map(({id , ...rest})  =>{
                             return(
-                                <Grid xs={6} sm={3} >
-                                    <PreviewItem key={id} {...rest} addCartItem={()=>dispatch(addCartItem({id,...rest}))}/>
+                                <Grid key={id} item xs={6} sm={3} >
+                                    <PreviewItem {...rest} addCartItem={()=>dispatch(addCartItem({id,...rest}))}/>
                                 </Grid>
                         )})
                     }

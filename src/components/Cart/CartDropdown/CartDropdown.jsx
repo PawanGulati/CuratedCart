@@ -90,9 +90,8 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
             <div>
             <div className={classes.cart_items}>
             {
-                cartItems.map(item=>{
-                    return (<CartItem {...item}/>)
-                })
+                cartItems.map(item=>
+                    <CartItem key={item.id} {...item}/>)
             }
         </div>
         <div className={classes.checkout}>
