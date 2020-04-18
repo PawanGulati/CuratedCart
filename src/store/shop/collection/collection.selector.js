@@ -9,3 +9,9 @@ export const selectCollections = createSelector(
     [selectCollection],
     collection => Object.values(collection.collections)
 )
+
+// collection for particular category in params 
+export const selectCategoryCollection = category =>createSelector(
+    [selectCollection],
+    collection => collection.collections[category]
+)
