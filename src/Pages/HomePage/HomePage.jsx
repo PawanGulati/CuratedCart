@@ -6,45 +6,19 @@ import ContactDisplay from '../../components/Home/ContactDisplay/ContactDisplay'
 
 import classes from './HomePage.module.css'
 
-export default class HomePage extends Component {
-    state = {
-        categories : [
-            {
-                id:1,
-                title:'Clothes',
-                imgURL:'https://i.ibb.co/1LhTS6f/two-hanged-blue-stonewash-and-blue-jeans-1082528-3.jpg',
-                size:'small'
-            },{
-                id:2,
-                title:'Electronics',
-                imgURL:'https://i.ibb.co/LrYMw9X/apple-laptop-macbook-computer-191158.jpg',
-                size:'small'
-            },{
-                id:3,
-                title:'Footwear',
-                imgURL:'https://i.ibb.co/G3pqc89/fashion-shoes-footwear-19090.jpg',
-                size:'small'
-            },{
-                id:4,
-                title:'Furniture',
-                imgURL:'https://i.ibb.co/xJGYJYM/architecture-beverage-chair-coffee-220749.jpg',
-                size:'small'
-            },{
-                id:5,
-                title:'Watch',
-                imgURL:'https://i.ibb.co/NTmSMGy/black-leather-strap-silver-chronograph-watch-125779.jpg',
-                size:'small'
-            },{
-                id : 6,
-                title : 'Hats',
-                imgURL : 'https://i.ibb.co/hRP6k7R/four-brown-straw-hats-display-1078973.jpg',
-                size : 'small'
-            }
-        ]
-    }
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import {selectCategories} from '../../store/shop/category/category.selector'
 
+
+const mapStateToProps = createStructuredSelector({
+    categories:selectCategories
+})
+
+export default connect(mapStateToProps)(class HomePage extends Component {
     render() {
-        const {categories} = this.state
+        const {categories} = this.props
+        
         return (
             <div className={classes.HomePage}>
                 <LandingDisplay />
@@ -54,4 +28,4 @@ export default class HomePage extends Component {
             </div>
         )
     }
-}
+})

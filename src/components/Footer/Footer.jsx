@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Footer.module.css' 
-import { Grid, Typography } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 
 export default function Footer() {
@@ -8,8 +8,9 @@ export default function Footer() {
         <div className={classes.Footer}>
             <Container style={{height : '100%'}}>
             <Grid container style={{height : '100%'}}>
-                <Grid xs={12} sm={10}>
+                <Grid item xs={12} sm={10}>
                 <div className={classes.left_part}>
+                    {/* TODO: Have to change these bellow divs to typography */}
                     <div className={classes.text}>STAY IN THE LOOP?</div>
                     <div className={classes.google}/>
                     <div className={classes.twitter}/>
@@ -18,7 +19,7 @@ export default function Footer() {
                 </div>
                 </Grid>
 
-                <Grid xs={12} sm={2}>
+                <Grid item xs={12} sm={2}>
                     <div className={classes.copyright}>© Curated Cart 2020</div>
                 </Grid>
             </Grid>
