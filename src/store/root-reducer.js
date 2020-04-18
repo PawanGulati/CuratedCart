@@ -4,6 +4,8 @@ import {persistReducer} from 'redux-persist'
 
 import userReducer from './user/user.reducer'
 import cartReducer from './cart/cart.reducer'
+import categoryReducer from './shop/category/category.reducer'
+import collectionReducer from './shop/collection/collection.reducer'
 
 // configuring persis store
 const persistConfig = {
@@ -14,7 +16,9 @@ const persistConfig = {
    
 const rootReducer = combineReducers({
     user:userReducer,
-    cart:cartReducer
+    cart:cartReducer,
+    category:categoryReducer,
+    collection:collectionReducer
 })
 
 export default persistReducer(persistConfig,rootReducer)
