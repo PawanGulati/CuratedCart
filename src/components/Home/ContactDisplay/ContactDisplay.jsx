@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => createStyles({
     ContactDisplay_main_display:{
-        height : '40%', 
+        height : '36vh', 
         marginBottom : '56px',
         background : '#E8E8CF',
         padding :'2rem',
@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => createStyles({
         },
         display : 'flex',
         alignItems : 'center',
+        flexFlow : 'column'
         // fontFamily : '"Exo 2",sans-serif',
     },
 
@@ -55,10 +56,10 @@ const useStyles = makeStyles(theme => createStyles({
     },
 
     text_style:{
-        fontSize : '1.2vw',
+        fontSize : '1.4vw',
         fontFamily : '"Exo 2",sans-serif',
         fontWeight : 'bold',
-        marginBottom : '10px',
+        margin : '10px 0 10px 0',
         [theme.breakpoints.down('sm')]:{
             fontSize : '5vw'
         },
@@ -70,7 +71,7 @@ const useStyles = makeStyles(theme => createStyles({
 export default function ContactDisplay() {
     let classes = useStyles();
     return (
-        <div className={classes.ContactDisplay_main_display}>
+        <section className={classes.ContactDisplay_main_display}>
             <Container style={{height : '100%'}}>
                 <Grid container style={{height : '100%'}}>
                     
@@ -126,6 +127,6 @@ export default function ContactDisplay() {
                     </Grid>
                 </Grid>
             </Container>
-        </div>
+        </section>
     )
 }

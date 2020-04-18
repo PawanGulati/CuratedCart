@@ -7,7 +7,7 @@ import classes from './LandingDisplay.module.css'
 
 export default function LandingDisplay() {
     return (
-        <div className={classes.main_display}>
+        <section className={classes.main_display}>
             <Container style={{height : "100%"}}>
                 <Grid container style={{height : "100%"}}>
                     
@@ -24,6 +24,6 @@ export default function LandingDisplay() {
                     </Grid>
                 </Grid>
             </Container>
-        </div>
+        </section>
     )
 }

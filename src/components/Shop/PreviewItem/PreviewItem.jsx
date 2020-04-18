@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => createStyles({
         display : 'flex',
         alignItems : 'center',
         flexFlow : 'column',
-        margin : '5px 0 0 0',
+        margin : '10px 0 0 0',
     },
     
     item_image :{
@@ -72,12 +72,26 @@ const useStyles = makeStyles(theme => createStyles({
         cursor:'pointer',
         fontSize : '40px',
         [theme.breakpoints.up('md')]:{
-            fontSize : '60px'
+            fontSize : '50px'
         },
         zIndex : '2',
         opacity : '0',
         transition : 'all .3s ease-in-out',
         color :'#FFFFFF',
+        "&:active":{
+            animation : `$popup 4s ${theme.transitions.easing.easeInOut} forwards`
+        }
+    },
+    "@keyframes popup" :{
+        "0%":{
+            transform : 'scale(1.3)'
+        },
+        "50%" :{
+            transform : 'scale(1.2)'
+        },
+        "100%":{
+            transform: 'scale(1.1)'
+        }
     }
     
     
