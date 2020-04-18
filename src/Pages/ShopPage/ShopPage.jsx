@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Preview from '../../components/Shop/Preview/Preview'
-import Typography from '@material-ui/core/Typography'
 import classes from './ShopPage.module.css'
 
 export default class ShopPage extends Component {

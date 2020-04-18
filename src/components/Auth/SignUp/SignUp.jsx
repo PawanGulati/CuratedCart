@@ -9,11 +9,9 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import classes from './SignUp.module.css'
-import { render } from '@testing-library/react';
 import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
 
 
@@ -107,7 +105,7 @@ export default class SignUp extends Component{
                   name="password"
                   label="Password"
                   type="password"
-                  id="password"
+                  id="password1"
                   autoComplete="off"
                   value={this.state.password}
                   onChange={this.inputChangeHandler}

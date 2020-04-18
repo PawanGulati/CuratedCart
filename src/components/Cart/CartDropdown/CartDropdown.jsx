@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme =>({
         width:'240px',
         position:'absolute',
         top:'60px',
-        right:'.5rem',
+        right:0,
         zIndex:100,
         // border:'1px solid black',
         boxShadow:'1px 2px 25px 5px rgba(0,0,0,.4)',

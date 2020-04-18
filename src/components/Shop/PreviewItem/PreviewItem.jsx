@@ -1,7 +1,6 @@
 import React from 'react'
 import createStyles from '@material-ui/core/styles/createStyles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 

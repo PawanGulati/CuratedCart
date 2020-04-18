@@ -64,7 +64,7 @@ export default class SignIn extends Component {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
+                        id="email1"
                         label="Email Address"
                         name="email"
                         value={this.state.email}
