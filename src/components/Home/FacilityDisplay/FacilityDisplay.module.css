@@ -1,4 +1,82 @@
+
 .main_display{
-    height:100%;
-    border: 2px solid brown;
+    height:66vh;
+    padding : 2rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: cover; */
+    background-image: url("https://i.ibb.co/QKqLnwS/gamer-colour-400px.png");
+}
+
+.facility{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.facility>p{
+    font-family: 'Exo 2',sans-serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.facility > img{
+    width: 64px;
+    height : 64px;
+    transition: all .3s ease-in-out;
+}
+
+#customer_care:hover{
+    animation:fadeIn .5s ease-in-out forwards;
+}
+
+@keyframes fadeIn
+{
+    0%{transform: scale(1);}
+    20%{transform: scale(1.1);}
+    30%{transform: scale(1);}
+    40%{transform: rotateY(90deg);}
+}
+
+#fast_shipping:hover{
+    transform: translateX(50px);
+}
+
+#secured_payments:hover{
+    animation: tadda .5s ease-in-out forwards;
+}
+
+@keyframes tadda
+{
+    0%{transform: rotateZ(20deg);}
+    50%{transform: rotateZ(-20deg);}
+    100%{transform: rotateZ(0deg);}
+}
+
+#assured_products:hover{
+    animation: popup .5s ease-in-out forwards;
+}
+
+@keyframes popup
+{
+    0%{transform: scale(1.1);}
+    30%{transform: scale(1.4);}
+    50%{transform: scale(1.2);}
+    100%{transform : scale(1.5);}
+}
+
+.display{
+    opacity: 0;
+}
+
+@media(max-width : 500px){
+    .facility > p{
+        font-size: 4vw;
+    }
+
+    .main_display{
+        background-size: 60vw;
+    }
 }

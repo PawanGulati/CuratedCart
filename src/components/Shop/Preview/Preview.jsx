@@ -9,16 +9,16 @@ import {connect} from 'react-redux'
  
 const useStyles = makeStyles(theme => createStyles({
     main_display:{
-        height : '100%', 
+        height : '90vh', 
         margin : '10px 0',
     },
 
     title :{
         fontFamily:'"Exo 2",sans-serif',
-        fontSize :'5vw',
+        fontSize :'6vw',
         fontWeight :'600',
         [theme.breakpoints.up('md')]:{
-            fontSize : '2vw'
+            fontSize : '2.2vw'
         },
         borderBottom : '2px solid #E8E8CF '
     },
@@ -32,7 +32,7 @@ export default connect()(function Preview({dispatch,items, title}) {
         <section className={classes.main_display}>
             <Container style={{height : '100%'}}>
                 <Typography className={classes.title}>{title}</Typography>
-                <Grid container style={{height : '90%'}} justify="space-between">
+                <Grid container style={{height : '86%'}} justify="space-between">
                     {
                         //rendering only 4 item at a time for preview of each category 
                         items

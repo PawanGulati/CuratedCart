@@ -8,7 +8,7 @@ import CategoryItem from './CategoryItem/CategoryItem'
 export default function ProductDisplay(props) {
     const {categories} = props
     return (
-        <div className={classes.main_display} id="products">
+        <section className={classes.main_display} id="products">
             <Container style={{height : '100%'}}>
                 <Grid container justify="space-between" style={{height : '100%'}} spacing={1} >
                 {
@@ -23,6 +23,6 @@ export default function ProductDisplay(props) {
                 }
                 </Grid>
             </Container>
-        </div>
+        </section>
     )
 }

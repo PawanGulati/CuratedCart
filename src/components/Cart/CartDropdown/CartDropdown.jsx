@@ -95,7 +95,7 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
             }
         </div>
         <div className={classes.checkout}>
-            <span>Total: ₹{cartTotalPrice}</span>
+            <span>Total: ₹{cartTotalPrice.toLocaleString()}</span>
             <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
         </div>
         </div>)

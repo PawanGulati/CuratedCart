@@ -14,7 +14,6 @@ import CartDropdown from '../Cart/CartDropdown/CartDropdown';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectDropToggle } from '../../store/cart/cart.selector';
-import { Container } from '@material-ui/core';
 
 
 const mapStateToProps = createStructuredSelector({
@@ -27,20 +26,20 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
     const links = (
         <div className={classes.links}>
             <Link href='/shop' underline="none" className={classes.link} color="inherit">
-                <Typography variant='body1' style={{margin:'2px',fontWeight:500, fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
+                <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder', fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
             </Link>
             <Link href='/#products' underline="none" className={classes.link} color="inherit">
-                <Typography variant='body1' style={{margin:'2px',fontWeight:500,fontFamily:'"Dosis",sans-serif'}}>Product</Typography>
+                <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Product</Typography>
             </Link>
             {!currentUser?(
                     <Link onClick={() =>auth().signOut() } underline="none" className={classes.link} color="inherit">
                         <ExitToAppIcon/>
-                        <Typography variant='body1' style={{margin:'2px',fontWeight:500,fontFamily:'"Dosis",sans-serif'}}>Logout</Typography>
+                        <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Logout</Typography>
                     </Link>
                 ):(
                     <Link href='/auth' underline="none" className={classes.link} color="inherit">
                         <ExitToAppIcon/>
-                        <Typography variant='body1' style={{margin:'2px',fontWeight:500,fontFamily:'"Dosis",sans-serif'}}>SignIn</Typography>
+                        <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>SignIn</Typography>
                     </Link>
                 )    
             }
@@ -51,7 +50,6 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
     return (
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
-                <Container>
                     <Toolbar className={classes.toolbar}>
                         <div className={classes.logo_container}>Curated Cart</div>{/* <Logo /> will be here */}
                         {links}                
@@ -61,7 +59,6 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
                             :null
                         }
                     </Toolbar>
-                </Container>
             </AppBar>
         </div>
     )
