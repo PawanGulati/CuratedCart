@@ -14,7 +14,6 @@ import CartDropdown from '../Cart/CartDropdown/CartDropdown';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectDropToggle } from '../../store/cart/cart.selector';
-import { Container } from '@material-ui/core';
 
 
 const mapStateToProps = createStructuredSelector({
@@ -51,7 +50,6 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
     return (
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
-                <Container>
                     <Toolbar className={classes.toolbar}>
                         <div className={classes.logo_container}>Curated Cart</div>{/* <Logo /> will be here */}
                         {links}                
@@ -61,7 +59,6 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
                             :null
                         }
                     </Toolbar>
-                </Container>
             </AppBar>
         </div>
     )
