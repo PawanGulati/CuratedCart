@@ -8,60 +8,62 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => createStyles({
     ContactDisplay_main_display:{
-        height : '100%', 
+        height : '40%', 
         marginBottom : '56px',
         background : '#E8E8CF',
         padding :'2rem',
-        [theme.breakpoints.up('sm')]:{
-            height : '50%'
+        [theme.breakpoints.down('sm')]:{
+            height : '115%'
         },
         display : 'flex',
-        alignItems : 'center'
+        alignItems : 'center',
+        // fontFamily : '"Exo 2",sans-serif',
     },
 
     left_part:{
-        height : '95%',
         width : '95%',
-        border : '1px solid black',
-        display : 'flex',
-        fontFamily : '"Exo 2",sans-serif',
-        flexFlow : 'column',
-        fontSize : '1.2vw',
-        fontWeight :'bold',
+        // border : '1px solid black',
         [theme.breakpoints.down('sm')]:{
-            fontSize : '5vw'
+            width : '100%'
         },
     },
 
-    right_part:{
-        fontFamily : '"Exo 2",sans-serif',
-        fontSize : '1.4vw',
-        fontWeight : 'bold',
+    middle_part:{
         height : '100%',
         width : '95%',
         // border : '1px solid black',
+        [theme.breakpoints.down('sm')]:{
+            width : '100%'
+        },
+        display :'flex',
+        flexFlow:'column',
+        justifyContent :'space-between'
+    },
+
+    right_part:{
+        width : '95%',
+        border : '2px solid #c4c49d',
         display : 'flex',
+        flexFlow : 'column',
         justifyContent : 'center',
         alignItems : 'center',
         background : 'white',
         padding : '0 2rem 1rem 2rem',
         [theme.breakpoints.down('sm')]:{
-            fontSize : '4vw'
+            width : '100%'
         },
     },
-    
-    // connect_with_us:{
-    //     width : '90%',
-    //     height : '90%',
-    // },
- 
-    part_1:{
-        display: 'flex',
-        justifyContent : 'space-between',
+
+    text_style:{
+        fontSize : '1.2vw',
+        fontFamily : '"Exo 2",sans-serif',
+        fontWeight : 'bold',
+        marginBottom : '10px',
         [theme.breakpoints.down('sm')]:{
-            flexFlow : 'column',
+            fontSize : '5vw'
         },
-    },
+    }
+ 
 }))
 
 
@@ -71,46 +73,33 @@ export default function ContactDisplay() {
         <div className={classes.ContactDisplay_main_display}>
             <Container style={{height : '100%'}}>
                 <Grid container style={{height : '100%'}}>
-                    <Grid sm={8}>
+                    
+                    <Grid sm={3}>
                         <div className={classes.left_part}>
-                            <Grid xs={12}>
-                                <div className={classes.part_1}>
-                                    <Grid md={2.4}>About Us</Grid>
-                                    <Grid md={2.4}>Contact Us</Grid>
-                                    <Grid md={2.4}>Sell With Us</Grid>
-                                    <Grid md={2.4}>Shipping & Return Policy</Grid>
-                                    <Grid md={2.4}>FAQs</Grid>
-                                </div>
-                            </Grid>
-                            <Grid xs={12}>
-                                <span>Address</span>
-                                <span style={{textAlign : 'start'}}>Knowhere,  2nd Floor Solanki Multistorey,Guna 473001, Madhya Pradesh India</span>
-                            </Grid>
-                            <Grid xs={12}>
-                                Phones       07542-265873, 9174762509
-                            </Grid>
-                            <Grid xs={12}>
-                                E-Mail        curated@cart.org
-                            </Grid>
+                            <Typography className={classes.text_style}>About Us</Typography>
+                            <Typography className={classes.text_style}>Contact Us</Typography>
+                            <Typography className={classes.text_style}>Sell With Us</Typography>
+                            <Typography className={classes.text_style}>Shipping & Return Policy</Typography>
+                            <Typography className={classes.text_style}>FAQs</Typography>
+                        </div>
+                    </Grid>
+                    
+                    <Grid sm={5}>
+                        <div className={classes.middle_part}> 
+                            <div style={{height :'50%'}}>
+                                <Typography className={classes.text_style}>Knowhere,  2nd Floor Solanki Multistorey,Guna 473001, Madhya Pradesh India</Typography>
+                            </div>
+                            <div style={{height :'50%'}}> 
+                                <Typography className={classes.text_style}>07542-265873, 9174762509</Typography>
+                                <Typography className={classes.text_style}>curated@cart.org</Typography>
+                            </div>
                         </div>
                     </Grid>
                     
                     <Grid sm={4}>
                         <div className={classes.right_part}>
-                            <div className={classes.connect_with_us}>
-                                <p>
-                                    Receive all our news & updates
-                                </p>
-                                <form className={classes.form} noValidate>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="userName"
-                                    label="Full Name"
-                                    name="userName"
-                                    autoComplete="off"
-                                />
+                            <Typography className={classes.text_style}>Receive all our news & updates</Typography>
+                            <form  noValidate>
                                 
                                 <TextField
                                     variant="outlined"
@@ -125,20 +114,16 @@ export default function ContactDisplay() {
                                 />
                                 
                                 <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                                >
-                                Subscribe Now
-                            </Button>
-                        </form>
-
-                            </div>
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    >
+                                    Subscribe Now
+                                </Button>
+                            </form>
                         </div>
                     </Grid>
-                    
                 </Grid>
             </Container>
         </div>
