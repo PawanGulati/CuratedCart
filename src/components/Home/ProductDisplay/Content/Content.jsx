@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => createStyles({
         alignItems : "center",
         justifyContent : "center",
         position  : 'absolute',
-        zIndex : '20',
+        zIndex : '2',
         border:'2px solid white',
         background : "rgba(0, 0, 0, .5)",
         padding : '0 10px',
