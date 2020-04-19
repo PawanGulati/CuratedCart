@@ -1,0 +1,24 @@
+.main_display{
+    margin-bottom: 60px;
+}
+
+.item{
+    height : 72vh;
+}
+
+.title{
+    font-family: 'Exo 2',sans-serif;
+    font-size: 2.5vw;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #E8E8CF;
+}
+
+@media(max-width : 600px){
+    .item {
+        height: 36vh 
+    }
+    .title{
+        font-size: 7vw;
+    }
+}

@@ -112,7 +112,6 @@ export default function ContactDisplay() {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="off"
-                                    autoFocus
                                 />
                                 
                                 <Button

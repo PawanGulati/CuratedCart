@@ -51,7 +51,7 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
                     <Toolbar className={classes.toolbar}>
-                        <div className={classes.logo_container}>Curated Cart</div>{/* <Logo /> will be here */}
+                        <Link href='/' ><span className={classes.logo_container}>Curated Cart</span></Link> {/* <Logo /> will be here */}
                         {links}                
                         {
                             drop_hide?    

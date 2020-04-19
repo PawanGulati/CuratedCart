@@ -3,6 +3,7 @@ import React from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
 import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => createStyles({
     root:{
@@ -17,6 +18,7 @@ const useStyles = makeStyles(theme => createStyles({
         borderRadius : '20px',
     },
     title:{
+        textDecoration : 'none',
         fontSize : '3vw',
         [theme.breakpoints.up('md')]:{
             fontSize : '1.5vw',
@@ -30,9 +32,10 @@ const useStyles = makeStyles(theme => createStyles({
 
 export default function Content({category}) {
     const classes = useStyles()
+    let url = `/shop/${category.title.toLowerCase()}` 
     return (
         <div className={classes.root}>
-            <Typography className={classes.title}>{category.title}</Typography>
+            <Link to={url} className={classes.title}>{category.title}</Link>
         </div>
     )
 }
