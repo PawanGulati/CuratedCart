@@ -76,7 +76,7 @@ export default function ContactDisplay() {
             <Container style={{height : '100%'}}>
                 <Grid container style={{height : '100%'}}>
                     
-                    <Grid sm={3}>
+                    <Grid item sm={3}>
                         <div className={classes.left_part}>
                             <Typography className={classes.text_style}>About Us</Typography>
                             <Typography className={classes.text_style}>Contact Us</Typography>
@@ -86,7 +86,7 @@ export default function ContactDisplay() {
                         </div>
                     </Grid>
                     
-                    <Grid sm={5}>
+                    <Grid item sm={5}>
                         <div className={classes.middle_part}> 
                             <div style={{height :'50%'}}>
                                 <Typography className={classes.text_style}>Knowhere,  2nd Floor Solanki Multistorey,Guna 473001, Madhya Pradesh India</Typography>
@@ -98,7 +98,7 @@ export default function ContactDisplay() {
                         </div>
                     </Grid>
                     
-                    <Grid sm={4}>
+                    <Grid item sm={4}>
                         <div className={classes.right_part}>
                             <Typography className={classes.text_style}>Receive all our news & updates</Typography>
                             <form  noValidate>
@@ -112,7 +112,6 @@ export default function ContactDisplay() {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="off"
-                                    autoFocus
                                 />
                                 
                                 <Button

@@ -16,7 +16,7 @@ export default connect(mapStateToProps)(class CategoryPage extends Component {
             <>
                 <Typography variant='h4' >{category.title}</Typography> 
 
-                // you can map category.items here with Grids >
+                {/* you can map category.items here with Grids > */}
             </>
         )
     }
