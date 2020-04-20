@@ -114,7 +114,13 @@ export default class SignIn extends Component {
                             Forgot password?
                         </Link>
                         </Grid>
+                        <Grid item xs>
+                            <Link href="/signup" variant="body2">
+                            New to Curated Cart? Sign Up
+                            </Link>
+                        </Grid>
                     </Grid>
+                    
                 </form>
             </div>
             </Container>

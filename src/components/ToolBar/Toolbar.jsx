@@ -37,9 +37,9 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
                         <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Logout</Typography>
                     </Link>
                 ):(
-                    <Link href='/auth' underline="none" className={classes.link} color="inherit">
+                    <Link href='/signup' underline="none" className={classes.link} color="inherit">
                         <ExitToAppIcon/>
-                        <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>SignIn</Typography>
+                        <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Login</Typography>
                     </Link>
                 )    
             }
@@ -51,7 +51,7 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
                     <Toolbar className={classes.toolbar}>
-                        <Link href='/' ><span className={classes.logo_container}>Curated Cart</span></Link> {/* <Logo /> will be here */}
+                        <div className={classes.logo_container}><Link href='/' style={{textDecoration:'none' , color : 'black'}} >Curated Cart</Link></div>{/* <Logo /> will be here */}
                         {links}                
                         {
                             drop_hide?    

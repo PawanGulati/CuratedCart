@@ -8,7 +8,8 @@ import Layout from './containers/Layout';
 import HomePage from './Pages/HomePage/HomePage'
 import ShopPage from './Pages/ShopPage/ShopPage';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AuthPage from './Pages/AuthPage/AuthPage';
+import SignUpPage from './Pages/AuthPage/SignUpPage/SignUpPage'
+import SignInPage from './Pages/AuthPage/SignInPage/SignInPage' 
 
 import {auth,createUserProfileDocument} from './firebase/firebase.utils'
 
@@ -45,7 +46,8 @@ class App extends Component {
       <CssBaseline />
         <Layout>
           <Switch>
-          <Route exact path='/auth' component={AuthPage} />
+          <Route exact path='/signup' component={SignUpPage}/>
+          <Route exact path='/signin' component={SignInPage}/>
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/' component={HomePage} />
           </Switch>

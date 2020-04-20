@@ -1,0 +1,11 @@
+.SignInPage{
+    height: calc(100% - 56px - 56px);
+    position: relative;
+    top:56px;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
