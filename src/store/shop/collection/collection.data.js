@@ -32,7 +32,7 @@ export default {
             },
         ]
     }, 
-    electronic: {
+    electronics: {
         id:12,
         title:'Electronics',
         items:[

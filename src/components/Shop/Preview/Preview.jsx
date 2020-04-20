@@ -6,6 +6,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Container, Grid } from '@material-ui/core'
 import {addCartItem} from '../../../store/cart/cart.action'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
  
 const useStyles = makeStyles(theme => createStyles({
     main_display:{
@@ -14,6 +15,7 @@ const useStyles = makeStyles(theme => createStyles({
     },
 
     title :{
+        color : 'black',
         fontFamily:'"Exo 2",sans-serif',
         fontSize :'6vw',
         fontWeight :'600',
@@ -28,10 +30,11 @@ const useStyles = makeStyles(theme => createStyles({
 
 export default connect()(function Preview({dispatch,items, title}) {
     const classes = useStyles()
+    let url = `/shop/${title.toLowerCase()}`;
     return (
         <section className={classes.main_display}>
             <Container style={{height : '100%'}}>
-                <Typography className={classes.title}>{title}</Typography>
+                <div className={classes.title}><Link to={url} style={{textDecoration : 'none',color: 'black'}}>{title}</Link></div>
                 <Grid container style={{height : '86%'}} justify="space-between">
                     {
                         //rendering only 4 item at a time for preview of each category 
