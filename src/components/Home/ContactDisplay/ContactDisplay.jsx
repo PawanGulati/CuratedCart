@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => createStyles({
     ContactDisplay_main_display:{
         height : '36vh', 
-        marginBottom : '56px',
+        // marginBottom : '56px',
         background : '#E8E8CF',
         padding :'2rem',
         [theme.breakpoints.down('sm')]:{

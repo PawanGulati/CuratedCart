@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import ToolBar from '../components/ToolBar/Toolbar'
-import Footer from '../components/Footer/Footer'
+// import Footer from '../components/Footer/Footer'
 
 export default class Layout extends Component {
     render() {
@@ -9,7 +9,6 @@ export default class Layout extends Component {
             <>
                 <ToolBar />
                 {this.props.children}
-                <Footer />
             </>
         )
     }
