@@ -12,7 +12,7 @@ import Container  from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotalPrice, selectCartItemCount } from '../../store/cart/cart.selector';
 import { createStructuredSelector } from 'reselect';
-import StripeCheckout from 'react-stripe-checkout';
+// import StripeCheckout from 'react-stripe-checkout';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -98,7 +98,10 @@ export default connect(mapStateToProps)(function CustomizedTables({cartItems,car
             </TableBody>
         </Table>
         </TableContainer>
-        <StripeCheckout className={classes.payButton}/>
+        {
+          // <StripeCheckout className={classes.payButton}/>
+
+        }
     </Container>  
   );
 })
