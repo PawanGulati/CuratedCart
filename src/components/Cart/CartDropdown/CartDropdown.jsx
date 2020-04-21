@@ -6,6 +6,7 @@ import CartItem from '../CartItem/CartItem'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCartItems, selectCartTotalPrice } from '../../../store/cart/cart.selector'
+import { toggleDrop } from '../../../store/cart/cart.action'
 
 const useStyles = makeStyles(theme =>({
     cart_drop:{
@@ -62,7 +63,7 @@ const mapStateToProps = createStructuredSelector({
     cartTotalPrice:selectCartTotalPrice
 })
 
-export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice}) {
+export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice,dispatch}) {
     const classes = useStyles();
     // let totalPrice=0;
     // const items = [];
@@ -73,8 +74,15 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
     //             totalPrice = totalPrice + (cartItems[item].price)* (cartItems[item].quantity);
     //         }
     // }
+
+    const onCheckout = ()=>{
+        // let history = useHistory()
+        // history.push('/checkout')
+        window.location.href = '/checkout'
+        dispatch(toggleDrop())
+    }
   
-    let content = 
+    let content =(
         <div className={classes.message}>
             <div style={{fontSize:'25px',fontWeight :'bold'}}>
                 Hey, it feels so light!
@@ -82,7 +90,8 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
             <div>
                 Let's add some items.
             </div>
-        </div>;
+        </div>
+    )
     
     if(cartItems.length)
     {
@@ -96,7 +105,7 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
         </div>
         <div className={classes.checkout}>
             <span>Total: ₹{cartTotalPrice.toLocaleString()}</span>
-            <Button variant='contained' color='primary' className={classes.check_butt}>Check Me Out</Button>
+            <Button variant='contained' color='primary' className={classes.check_butt} onClick={()=>onCheckout()}>Check Me Out</Button>
         </div>
         </div>)
     }

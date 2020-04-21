@@ -13,6 +13,7 @@ import SignInPage from './Pages/AuthPage/SignInPage/SignInPage'
 
 import {auth,createUserProfileDocument} from './firebase/firebase.utils'
 import ScrollToTop from './hoc/ScrollToTop';
+import Checkout from './Pages/CheckoutPage/Checkout';
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -50,6 +51,7 @@ class App extends Component {
           <Switch>
           <Route exact path='/signup' component={SignUpPage}/>
           <Route exact path='/signin' component={SignInPage}/>
+          <Route exact path='/checkout' component={Checkout}/>
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/' component={HomePage} />
           </Switch>
