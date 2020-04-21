@@ -12,6 +12,7 @@ import Container  from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotalPrice, selectCartItemCount } from '../../store/cart/cart.selector';
 import { createStructuredSelector } from 'reselect';
+import { Grid, Typography } from '@material-ui/core';
 // import StripeCheckout from 'react-stripe-checkout';
 
 const StyledTableCell = withStyles((theme) => ({
@@ -21,7 +22,7 @@ const StyledTableCell = withStyles((theme) => ({
     fontWeight:'bold'
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }))(TableCell);
 
@@ -39,10 +40,11 @@ const useStyles = makeStyles({
         minWidth: 700,
     },
     root:{
-        padding:'1rem',
+        padding:'2rem',
         top:'56px',
         position:'relative',
-        height:'calc(100% - 56px)'
+        height:'calc(100% - 56px)',
+
     },
     arrow:{
         fontSize:'1.3rem',
@@ -52,6 +54,19 @@ const useStyles = makeStyles({
         marginTop:"2rem",
         position:'absolute',
         right:0
+    },
+    page_title:{
+      fontFamily : '"Exo 2",sans-serif',
+      marginBottom : '10px',
+      fontWeight : 'bold'
+    },
+    item_title:{
+      display : 'flex',
+      alignItems : 'center',
+      fontSize : '20px',
+      fontWeight : '500',
+      fontFamily : '"Exo 2",sans-serif',
+
     }
 });
 
@@ -61,13 +76,16 @@ const mapStateToProps = createStructuredSelector({
     cartItemCount:selectCartItemCount
 })
 
-export default connect(mapStateToProps)(function CustomizedTables({cartItems,cartTotalPrice}) {
+export default connect(mapStateToProps)(function CustomizedTables({cartItems,cartTotalPrice,cartItemCount}) {
   const classes = useStyles();
 
   console.log(cartItems);
   
   return (
-    <Container className={classes.root}>
+    <div className={classes.root}>
+    <Container >
+    <Grid container>
+        <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
         <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
             <TableHead>
@@ -82,8 +100,8 @@ export default connect(mapStateToProps)(function CustomizedTables({cartItems,car
             <TableBody>
             {cartItems.map(item => (
                 <StyledTableRow key={item.id}>
-                    <StyledTableCell component="th" scope="item">
-                        {item.name}
+                    <StyledTableCell component="th" scope="item" className={classes.item_title}>
+                    {item.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" style={{fontWeight:'bold'}}><span className={classes.arrow}>&#10096;</span>{item.quantity}<span className={classes.arrow}>&#10097;</span></StyledTableCell>
                     <StyledTableCell align="right">{`₹ ${item.price.toFixed(2)}`}</StyledTableCell>
@@ -102,7 +120,9 @@ export default connect(mapStateToProps)(function CustomizedTables({cartItems,car
           // <StripeCheckout className={classes.payButton}/>
 
         }
-    </Container>  
+       </Grid>
+      </Container>  
+    </div>
   );
 })
 

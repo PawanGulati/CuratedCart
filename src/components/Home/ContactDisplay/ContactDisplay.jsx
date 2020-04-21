@@ -169,7 +169,7 @@ export default function ContactDisplay() {
                         <Typography className={[classes.instagram,classes.icon].join(' ')}/>
                         <Typography className={[classes.facebook,classes.icon].join(' ')}/>
                     </Grid>
-                    <Grid item sm={3} style={{display : 'flex',alignItems:'center'}} alignItems='center'>
+                    <Grid item sm={3} style={{display : 'flex',alignItems:'center'}} >
                         <Typography >©Curated Cart 2020</Typography>
                     </Grid>
                 </Grid>
