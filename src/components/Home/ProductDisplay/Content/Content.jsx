@@ -2,7 +2,6 @@ import React from 'react'
 
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/core/styles/createStyles'
-import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => createStyles({

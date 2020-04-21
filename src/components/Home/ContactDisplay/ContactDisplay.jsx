@@ -89,7 +89,7 @@ export default function ContactDisplay() {
                     <Grid item sm={5}>
                         <div className={classes.middle_part}> 
                             <div style={{height :'50%'}}>
-                                <Typography className={classes.text_style}>Knowhere,  2nd Floor Solanki Multistorey,Guna 473001, Madhya Pradesh India</Typography>
+                                <Typography className={classes.text_style}>Knowhere,  2nd Floor Solanki Complex,Guna 473001, Madhya Pradesh India</Typography>
                             </div>
                             <div style={{height :'50%'}}> 
                                 <Typography className={classes.text_style}>07542-265873, 9174762509</Typography>

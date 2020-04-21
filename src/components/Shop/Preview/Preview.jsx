@@ -1,6 +1,5 @@
 import React from 'react'
 import PreviewItem from '../PreviewItem/PreviewItem'
-import Typography from '@material-ui/core/Typography'
 import createStyles from '@material-ui/core/styles/createStyles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Container, Grid } from '@material-ui/core'
