@@ -10,21 +10,18 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => createStyles({
     ContactDisplay_main_display:{
         height : '36vh', 
-        // marginBottom : '56px',
         background : '#E8E8CF',
         padding :'2rem',
         [theme.breakpoints.down('sm')]:{
-            height : '115%'
+            height : '110vh'
         },
         display : 'flex',
         alignItems : 'center',
         flexFlow : 'column'
-        // fontFamily : '"Exo 2",sans-serif',
     },
 
     left_part:{
         width : '95%',
-        // border : '1px solid black',
         [theme.breakpoints.down('sm')]:{
             width : '100%'
         },
@@ -33,7 +30,6 @@ const useStyles = makeStyles(theme => createStyles({
     middle_part:{
         height : '100%',
         width : '95%',
-        // border : '1px solid black',
         [theme.breakpoints.down('sm')]:{
             width : '100%'
         },
@@ -64,7 +60,41 @@ const useStyles = makeStyles(theme => createStyles({
         [theme.breakpoints.down('sm')]:{
             fontSize : '5vw'
         },
-    }
+    },
+
+    footer :{
+        height :'10vh',
+        padding : '1rem',
+        background :'#525252', 
+        display : 'flex',
+        alignItems : 'center',
+        flexFlow : 'column',
+        color : 'white',
+        [theme.breakpoints.down('sm')]:{
+            height : '16vh'
+        },
+    },
+
+    icon:{
+        height: '40px',
+        width : '40px',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        margin : '5px 0 0 10px',   
+    },
+
+    instagram : {
+        backgroundImage: "url('https://i.ibb.co/cyRTYRC/instagram-1.png')",   
+    },
+    facebook : {
+        backgroundImage: "url('https://i.ibb.co/L575L0w/facebook.png')",   
+    },
+    twitter : {
+        backgroundImage: "url('https://i.ibb.co/KhxcmSw/twitter-1.png')",   
+    },
+    google_plus : {
+        backgroundImage: "url('https://i.ibb.co/JBKhTLH/icons8-google-plus-96.png')",
+    },
  
 }))
 
@@ -72,6 +102,7 @@ const useStyles = makeStyles(theme => createStyles({
 export default function ContactDisplay() {
     let classes = useStyles();
     return (
+        <>
         <section className={classes.ContactDisplay_main_display}>
             <Container style={{height : '100%'}}>
                 <Grid container style={{height : '100%'}}>
@@ -128,5 +159,22 @@ export default function ContactDisplay() {
                 </Grid>
             </Container>
         </section>
+        <section className={classes.footer}>
+            <Container style={{height : '100%'}}>
+                <Grid container style={{height : '100%'}}>
+                    <Grid item sm={9} style={{display : 'flex',flexFlow:'row',alignItems:'center'}}>
+                        <Typography>STAY IN THE LOOP?</Typography>
+                        <Typography className={[classes.twitter,classes.icon].join(' ')} />
+                        <Typography className={[classes.google_plus,classes.icon].join(' ')}/>
+                        <Typography className={[classes.instagram,classes.icon].join(' ')}/>
+                        <Typography className={[classes.facebook,classes.icon].join(' ')}/>
+                    </Grid>
+                    <Grid item sm={3} style={{display : 'flex',alignItems:'center'}} alignItems='center'>
+                        <Typography >©Curated Cart 2020</Typography>
+                    </Grid>
+                </Grid>
+            </Container>
+        </section>
+        </>
     )
 }
