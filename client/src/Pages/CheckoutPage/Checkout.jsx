@@ -102,7 +102,7 @@ export default connect(mapStateToProps)(function CustomizedTables({cartItems,car
                     {item.name}
                     </StyledTableCell>
                     <StyledTableCell align="right" style={{fontWeight:'bold'}}><span className={classes.arrow}>&#10096;</span>{item.quantity}<span className={classes.arrow}>&#10097;</span></StyledTableCell>
-                    <StyledTableCell align="right">{`₹ ${item.price.toFixed(2)}`}</StyledTableCell>
+                    <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
                     <StyledTableCell align="right" style={{fontSize:'1.5rem'}}>&#10008;</StyledTableCell>
                 </StyledTableRow>
             ))}
