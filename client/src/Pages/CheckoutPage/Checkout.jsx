@@ -13,7 +13,8 @@ import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotalPrice, selectCartItemCount } from '../../store/cart/cart.selector';
 import { createStructuredSelector } from 'reselect';
 import { Grid, Typography } from '@material-ui/core';
-// import StripeCheckout from 'react-stripe-checkout';
+
+import CheckoutButton from '../../components/Checkout/CheckoutButton/CheckoutButton';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -35,7 +36,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
     table: {
         minWidth: 700,
     },
@@ -53,7 +54,7 @@ const useStyles = makeStyles({
     payButton:{
         marginTop:"2rem",
         position:'absolute',
-        right:0
+        right:0,
     },
     page_title:{
       fontFamily : '"Exo 2",sans-serif',
@@ -68,7 +69,7 @@ const useStyles = makeStyles({
       fontFamily : '"Exo 2",sans-serif',
 
     }
-});
+}));
 
 const mapStateToProps = createStructuredSelector({
     cartItems:selectCartItems,
@@ -79,12 +80,9 @@ const mapStateToProps = createStructuredSelector({
 export default connect(mapStateToProps)(function CustomizedTables({cartItems,cartTotalPrice,cartItemCount}) {
   const classes = useStyles();
 
-  console.log(cartItems);
-  
   return (
     <div className={classes.root}>
     <Container >
-    <Grid container>
         <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
         <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
@@ -116,12 +114,8 @@ export default connect(mapStateToProps)(function CustomizedTables({cartItems,car
             </TableBody>
         </Table>
         </TableContainer>
-        {
-          // <StripeCheckout className={classes.payButton}/>
-
-        }
-       </Grid>
-      </Container>  
+        <CheckoutButton className={classes.payButton} price={cartTotalPrice}/>
+    </Container>  
     </div>
   );
 })

@@ -2,10 +2,13 @@ import React from 'react'
 import { ReactComponent as BagIcon} from '../../../assets/Images/shopping-bag.svg'
 import StripeCheckout from 'react-stripe-checkout'
 
+import Axios from 'axios'
+
 export default function CheckoutButton({price}) {
-    const fromRupToCent = amount => amount * 1.307189;  // calculated on basis of 1 cent is 0.765 rupees rgt now
+    const fromRupToPaisa = amount => amount * 100;  // calculated on basis of 1 cent is 0.765 rupees rgt now
     const CURRENCY = 'INR';
     const publishable_key = 'pk_test_KFUbIPVwGYBWk4o0rwrDQapH00HWOeYO0F' // JUST FOR TEST MODE, sry abt that
+    const PAYMENT_SERVER_URL = 'http://localhost:8080/payment'
 
     const successPayment = data => {
         alert(`Payment Successful, We are in business ${data.email}`);
@@ -15,29 +18,27 @@ export default function CheckoutButton({price}) {
         alert('Payment Error');
     };
 
-    const onToken = (amount, description) => token =>
-        alert('Payment Successful')
-        // axios.post(PAYMENT_SERVER_URL,
-        //     {
-        //     description,
-        //     source: token.id,
-        //     currency: CURRENCY,
-        //     amount: fromEuroToCent(amount)
-        //     })
-        //     .then(successPayment)
-        //     .catch(errorPayment);
-
+    const onToken = () => token =>{
+        Axios.post(PAYMENT_SERVER_URL,
+            {
+            token:token,
+            currency: CURRENCY,
+            amount: fromRupToPaisa(price)
+            })
+            .then(successPayment)
+            .catch(errorPayment);
+        }
     return (
         <StripeCheckout 
             name="Curated Cart"
             description={`Your Total is ${price}`}
-            image={BagIcon} // replace it afterwards, I donno if it will work or not
+            image="https://i.ibb.co/2s3hBdV/Logo-3.jpg" // TODO: replace it afterwards with some good svg logo 
             label = "CHECKOUT"
-            panelLabel="PAY NOW"
-            amount={fromRupToCent(price)}
+            panelLabel="PAY "
+            amount={fromRupToPaisa(price)}
             currency={CURRENCY}
             stripeKey={publishable_key}
-            token={onToken(amount,description)}
+            token={onToken()}
             billingAddress  
             shippingAddress
         />
