@@ -16,7 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { Grid, Typography } from '@material-ui/core';
 
 import CheckoutButton from '../../components/Checkout/CheckoutButton/CheckoutButton';
-import { clearItemFromCart } from '../../store/cart/cart.action';
+import { clearItemFromCart, removeItemFromCart, increaseItemInCart } from '../../store/cart/cart.action';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -51,7 +51,8 @@ const useStyles = makeStyles(theme=>({
     },
     arrow:{
         fontSize:'1.3rem',
-        margin:'.5rem'
+        margin:'.5rem',
+        cursor:'pointer'
     },
     payButton:{
         marginTop:"2rem",
@@ -70,6 +71,11 @@ const useStyles = makeStyles(theme=>({
       fontWeight : '500',
       fontFamily : '"Exo 2",sans-serif',
 
+    },
+    removeBut:{
+      fontWeight:'bold',
+      cursor:'pointer',
+      fontSize:'1.5rem'  
     }
 }));
 
@@ -80,13 +86,15 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch =>({
-  clearItemFromCart: item => dispatch(clearItemFromCart(item)) 
+  clearItemFromCart: item => dispatch(clearItemFromCart(item)) ,
+  removeItemFromCart:item => dispatch(removeItemFromCart(item)),
+  increaseItemInCart:item => dispatch(increaseItemInCart(item))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTables(props) {
   const classes = useStyles();
 
-  const {cartItems,cartTotalPrice,cartItemCount,clearItemFromCart} = props
+  const {cartItems,cartTotalPrice,cartItemCount,clearItemFromCart,removeItemFromCart,increaseItemInCart} = props
 
   return !cartItems?(<Redirect to='/'/>):(
       <div className={classes.root}>
@@ -109,9 +117,13 @@ export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTa
                       <StyledTableCell component="th" scope="item" className={classes.item_title}>
                       {item.name}
                       </StyledTableCell>
-                      <StyledTableCell align="right" style={{fontWeight:'bold'}}><span className={classes.arrow}>&#10096;</span>{item.quantity}<span className={classes.arrow}>&#10097;</span></StyledTableCell>
+                      <StyledTableCell align="right" style={{fontWeight:'bold'}}>
+                        <span className={classes.arrow} onClick={()=>removeItemFromCart(item)}>&#10096;</span>
+                        {item.quantity}
+                        <span className={classes.arrow} onClick={()=>increaseItemInCart(item)}>&#10097;</span>
+                      </StyledTableCell>
                       <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
-                      <StyledTableCell align="right" style={{fontSize:'1.5rem'}} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
+                      <StyledTableCell align="right" className={classes.removeBut} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
                   </StyledTableRow>
               ))}
               <TableRow>
