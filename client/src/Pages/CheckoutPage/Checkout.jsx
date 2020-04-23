@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
 
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -15,6 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { Grid, Typography } from '@material-ui/core';
 
 import CheckoutButton from '../../components/Checkout/CheckoutButton/CheckoutButton';
+import { clearItemFromCart } from '../../store/cart/cart.action';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -77,47 +79,53 @@ const mapStateToProps = createStructuredSelector({
     cartItemCount:selectCartItemCount
 })
 
-export default connect(mapStateToProps)(function CustomizedTables({cartItems,cartTotalPrice,cartItemCount}) {
+const mapDispatchToProps = dispatch =>({
+  clearItemFromCart: item => dispatch(clearItemFromCart(item)) 
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTables(props) {
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-    <Container >
-        <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
-        <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-            <TableRow>
-                <StyledTableCell>Product</StyledTableCell>
-                {/*<StyledTableCell align="right">Description</StyledTableCell>*/}
-                <StyledTableCell align="right">Quantity</StyledTableCell>
-                <StyledTableCell align="right">Price&nbsp;(₹)</StyledTableCell>
-                <StyledTableCell align="right">Remove</StyledTableCell>
-            </TableRow>
-            </TableHead>
-            <TableBody>
-            {cartItems.map(item => (
-                <StyledTableRow key={item.id}>
-                    <StyledTableCell component="th" scope="item" className={classes.item_title}>
-                    {item.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right" style={{fontWeight:'bold'}}><span className={classes.arrow}>&#10096;</span>{item.quantity}<span className={classes.arrow}>&#10097;</span></StyledTableCell>
-                    <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
-                    <StyledTableCell align="right" style={{fontSize:'1.5rem'}}>&#10008;</StyledTableCell>
-                </StyledTableRow>
-            ))}
-            <TableRow>
-                <TableCell rowSpan={3} />
-                <TableCell colSpan={2} align="right">Subtotal</TableCell>
-                <TableCell align="right">{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
-            </TableRow>
-            </TableBody>
-        </Table>
-        </TableContainer>
-        <CheckoutButton className={classes.payButton} price={cartTotalPrice}/>
-    </Container>  
-    </div>
-  );
+  const {cartItems,cartTotalPrice,cartItemCount,clearItemFromCart} = props
+
+  return !cartItems?(<Redirect to='/'/>):(
+      <div className={classes.root}>
+      <Container >
+          <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
+          <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+              <TableRow>
+                  <StyledTableCell>Product</StyledTableCell>
+                  {/*<StyledTableCell align="right">Description</StyledTableCell>*/}
+                  <StyledTableCell align="right">Quantity</StyledTableCell>
+                  <StyledTableCell align="right">Price&nbsp;(₹)</StyledTableCell>
+                  <StyledTableCell align="right">Remove</StyledTableCell>
+              </TableRow>
+              </TableHead>
+              <TableBody>
+              {cartItems.map(item => (
+                  <StyledTableRow key={item.id}>
+                      <StyledTableCell component="th" scope="item" className={classes.item_title}>
+                      {item.name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right" style={{fontWeight:'bold'}}><span className={classes.arrow}>&#10096;</span>{item.quantity}<span className={classes.arrow}>&#10097;</span></StyledTableCell>
+                      <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
+                      <StyledTableCell align="right" style={{fontSize:'1.5rem'}} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
+                  </StyledTableRow>
+              ))}
+              <TableRow>
+                  <TableCell rowSpan={3} />
+                  <TableCell colSpan={2} align="right">Subtotal</TableCell>
+                  <TableCell align="right">{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
+              </TableRow>
+              </TableBody>
+          </Table>
+          </TableContainer>
+          <CheckoutButton className={classes.payButton} price={cartTotalPrice}/>
+      </Container>  
+      </div>
+    )
 })
 
 

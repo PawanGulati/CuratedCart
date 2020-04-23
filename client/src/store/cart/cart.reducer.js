@@ -1,4 +1,4 @@
-import {TOGGLE_DROP, ADD_ITEM} from './cart.types'
+import {TOGGLE_DROP, ADD_ITEM,CLEAR_ITEM_FROM_CART} from './cart.types'
 
 const initial_state = {
     drop_hide:false,
@@ -20,6 +20,11 @@ const addItemToCart = (cartItems,cartItem) =>{
     return [...cartItems,{...cartItem,quantity:1}]
 }
 
+const clearItemFromCart = (cartItems,cartItem) =>{
+    return cartItems.filter(item => item.id !== cartItem.id)
+}
+
+
 const cartReducer = (state=initial_state,action) =>{
     switch (action.type) {
         case TOGGLE_DROP:
@@ -34,6 +39,15 @@ const cartReducer = (state=initial_state,action) =>{
                 cartItemCount: state.cartItemCount + 1,
                 cartTotalPrice: state.cartTotalPrice + action.item.price
             }    
+        case CLEAR_ITEM_FROM_CART:
+            let newState = {
+                ...state,
+                cartItems: clearItemFromCart(state.cartItems,action.item),
+                cartItemCount: state.cartItemCount - action.item.quantity,
+                cartTotalPrice: state.cartTotalPrice - (action.item.price*action.item.quantity)
+            }
+            // console.log(newState);
+            return newState
         default:
             return state
     }

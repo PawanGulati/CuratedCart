@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme =>({
         position:'absolute',
         bottom:'11px',
         fontWeight:'bold',
-        fontSize:'12px'
+        fontSize:'12px',
     }
 }))
 
@@ -42,7 +42,8 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps)(function CartIcon({dispatch,cartItemCount}) {
     const classes = useStyles()
-
+    console.log(cartItemCount);
+    
     return (
         <div className={classes.cart_icon} onClick={()=>dispatch(toggleDrop())}>
             <BagIcon className={classes.bag_icon} />         
