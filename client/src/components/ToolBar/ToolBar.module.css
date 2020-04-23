@@ -19,7 +19,7 @@
     /* font-family: 'Tangerine', cursive; */
     font-family: 'Montez', cursive;
     /* font-family: 'Megrim', cursive; */
-    font-size: 2vw;
+    font-size: 35px;
     font-weight: 600;
     text-decoration: none;
     color : black;
@@ -46,6 +46,6 @@
     }
 
     .logo_container{
-        font-size: 5vw;
+        font-size: 7vw;
     }
 }

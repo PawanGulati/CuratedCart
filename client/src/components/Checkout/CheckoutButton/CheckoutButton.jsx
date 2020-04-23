@@ -1,8 +1,21 @@
 import React from 'react'
-import { ReactComponent as BagIcon} from '../../../assets/Images/shopping-bag.svg'
+// import { ReactComponent as BagIcon} from '../../../assets/Images/shopping-bag.svg'
 import StripeCheckout from 'react-stripe-checkout'
-
+// import './CheckoutButton.css'
 import Axios from 'axios'
+import Button from '@material-ui/core/Button';
+import {makeStyles } from '@material-ui/core/styles';
+import { Grid} from '@material-ui/core';
+
+
+const useStyles = makeStyles(theme=>({
+    pay_button :{
+        position : 'relative',
+        top : '0',
+        left : '0',
+        width : '200px'
+    }
+}))
 
 export default function CheckoutButton({price}) {
     const fromRupToPaisa = amount => amount * 100;  // calculated on basis of 1 cent is 0.765 rupees rgt now
@@ -29,6 +42,7 @@ export default function CheckoutButton({price}) {
             .catch(errorPayment);
         }
     return (
+        <Grid container style={{width : '100%',height :'60px',display : 'flex',alignItems:'center',justifyContent:'flex-end'}}>
         <StripeCheckout 
             name="Curated Cart"
             description={`Your Total is ${price}`}
@@ -41,6 +55,14 @@ export default function CheckoutButton({price}) {
             token={onToken()}
             billingAddress  
             shippingAddress
-        />
+        >
+        <Button 
+                className={useStyles().pay_button}
+                fullWidth
+                variant="contained"
+                color="secondary">
+        PLACE ORDER</Button>
+        </StripeCheckout>
+        </Grid>
     )
 }
