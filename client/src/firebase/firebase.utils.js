@@ -49,6 +49,26 @@ export const createUserProfileDocument = async (user,signUpData) =>{
     return userRef
 }
 
+// can't add manually SHOP_DATA to db, so made a func to do this for me
+export const addCollectionAndDocs = async (collName,docToAdd)=>{
+    const collRef = firestore().collection(collName)
+    const collSnapShot = await collRef.get()
+
+    // here also we can do like we did in createProfileWithDoc as doing set() in ref, but the thing is 
+    // in firestore we can make only one set call at a time, So if we are say setting up array of objects and making
+    // 1 set call at a time, it may be possible dat internet goes tits up and half of docs would be saved and this would make 
+    // our code unpredictable, We want dat if any of one fails all fails, So what we can do is, can make batches and group all
+    // req together and firebase gives that inbuilt to us 
+    const batch = firestore().batch()
+
+    docToAdd.forEach(doc =>{
+        const newDocRef = collRef.doc() //just making new doc with random id init, can pass here (doc.title) as in our .data file
+        batch.set(newDocRef,doc)
+    })
+
+    return await batch.commit() // this returns a promise abt how batch calling went and also can chain through it
+}
+
 // Handling GOOGLE OAUTH 
 const provider = new firebase.auth.GoogleAuthProvider()
 provider.setCustomParameters({ prompt : 'select_account' ,'login_hint': 'user@example.com'})

@@ -6,8 +6,40 @@ import classes from './ShopPage.module.css'
 import { Switch, Route } from 'react-router'
 import CategoryPage from '../CategoryPage/CategoryPage'
 
+import {firestore} from '../../firebase/firebase.utils'
+import { connect } from 'react-redux'
+import { updateCollections } from '../../store/shop/collection/collection.action'
 
-export default class ShopPage extends Component {
+const mapDispatchToProps = dispatch =>({
+    updateCollections:(normalizedColl) => dispatch(updateCollections(normalizedColl))
+})
+
+export default connect(null,mapDispatchToProps)(class ShopPage extends Component {
+    unsubscribeFromSnapShot = null;
+    
+    componentDidMount(){
+        const {updateCollections} = this.props
+
+        const collRef = firestore().collection('collections')
+        collRef.onSnapshot(async snap =>{
+            const modifiedCollections = snap.docs.map(collSnap =>{
+                return {
+                    id:collSnap.id,
+                    ...collSnap.data()
+                }
+            })
+            
+            // console.log(modifiedCollections);
+            const normalizedCollections = modifiedCollections.reduce((acc,collection)=>{
+                acc[collection.title.toLowerCase()] = collection
+                return acc
+            },{})
+            // console.log(normalizedCollections);
+
+            updateCollections(normalizedCollections)
+        })
+    }
+    
     render() {
         const {match} = this.props
         return (
@@ -19,4 +51,4 @@ export default class ShopPage extends Component {
             </div>
         )
     }
-}
+})

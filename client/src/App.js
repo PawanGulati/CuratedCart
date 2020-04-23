@@ -11,15 +11,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import SignUpPage from './Pages/AuthPage/SignUpPage/SignUpPage'
 import SignInPage from './Pages/AuthPage/SignInPage/SignInPage' 
 
-import {auth,createUserProfileDocument} from './firebase/firebase.utils'
+import {auth,createUserProfileDocument,addCollectionAndDocs} from './firebase/firebase.utils'
 import ScrollToTop from './hoc/ScrollToTop';
 import Checkout from './Pages/CheckoutPage/Checkout';
+import { selectCollections } from './store/shop/collection/collection.selector';
+import { createStructuredSelector } from 'reselect';
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    const {setCurUser} = this.props
+    const {setCurUser,shopDataArr} = this.props
 
     this.unsubscribeFromAuth = auth().onAuthStateChanged(async user =>{
       if(user){
@@ -36,6 +38,8 @@ class App extends Component {
         setCurUser({currentUser:user})
       }
     })
+
+    // addCollectionAndDocs('collections',shopDataArr.map(({items,title})=>({items,title})))
   }
 
   componentWillUnmount(){
@@ -66,4 +70,8 @@ const mapDispatchToProps = dispatch =>({
   setCurUser:user => dispatch(setCurUser(user))
 })
 
-export default connect(null,mapDispatchToProps)(App);
+const mapStateToProps = createStructuredSelector({
+  // shopDataArr:selectCollections
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -7,11 +7,11 @@ const selectCollection = state => state.collection
 // here we are fetching collection as object so cant map der in preview or overview so hav to change
 export const selectCollections = createSelector(
     [selectCollection],
-    collection => Object.values(collection.collections)
+    collection => collection.collections ? Object.values(collection.collections) : []
 )
 
 // collection for particular category in params 
 export const selectCategoryCollection = category =>createSelector(
     [selectCollection],
-    collection => collection.collections[category]
+    collection => (collection.collections ? collection.collections[category] : null)
 )
