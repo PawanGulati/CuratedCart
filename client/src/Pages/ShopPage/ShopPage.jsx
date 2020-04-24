@@ -10,11 +10,20 @@ import {firestore} from '../../firebase/firebase.utils'
 import { connect } from 'react-redux'
 import { updateCollections } from '../../store/shop/collection/collection.action'
 
+import withSpinner from '../../hoc/withSpinner/withSpinner'
+
+const CollectionPreviewLoaded = withSpinner(CollectionPreview)
+const CategoryPageLoaded = withSpinner(CategoryPage)
+
 const mapDispatchToProps = dispatch =>({
     updateCollections:(normalizedColl) => dispatch(updateCollections(normalizedColl))
 })
 
 export default connect(null,mapDispatchToProps)(class ShopPage extends Component {
+    state={
+        isLoading:true
+    }
+
     unsubscribeFromSnapShot = null;
     
     componentDidMount(){
@@ -37,6 +46,8 @@ export default connect(null,mapDispatchToProps)(class ShopPage extends Component
             // console.log(normalizedCollections);
 
             updateCollections(normalizedCollections)
+
+            this.setState({isLoading:false})
         })
     }
     
@@ -45,8 +56,8 @@ export default connect(null,mapDispatchToProps)(class ShopPage extends Component
         return (
             <div className={classes.ShopPage}>
                 <Switch>
-                    <Route exact path={match.path} component={CollectionPreview} />
-                    <Route path={`${match.path}/:category`} component={CategoryPage}/>
+                    <Route exact path={match.path} render={(props)=><CollectionPreviewLoaded {...props} isLoading={this.state.isLoading} />} />
+                    <Route path={`${match.path}/:category`} render={(props)=><CategoryPageLoaded {...props} isLoading={this.state.isLoading} />} />
                 </Switch>
             </div>
         )

@@ -17,10 +17,9 @@ const mapActionToProps = dispatch=>{
     }
 }
 
-export default connect(mapStateToProps,mapActionToProps)(class CategoryPage extends Component {
+export default connect(mapStateToProps,mapActionToProps)(class CategoryPage extends Component {    
     render() {
         const {category} = this.props
-        console.log(this.props);
         return (
             <div className={classes.main_display}>
                 <div className={classes.title}>{category.title}</div> 
