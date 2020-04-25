@@ -41,10 +41,12 @@ snap{
 }
 
 @media(max-width:600px){
-    
-.textStyle{
-    display: none;    
-}
+    .textStyle{
+        display: none;    
+    }
+    .SignInPage::before{
+        opacity: .8;
+    }
 }
 
 

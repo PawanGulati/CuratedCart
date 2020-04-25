@@ -48,11 +48,12 @@ const useStyles = makeStyles(theme => createStyles({
     item_details:{
         height : '20%',
         width : '90%',
-        background : '#E8E8CF'
+        background : '#E8E8CF',
+        padding:'0 .5rem'
     },
     item_name :{
         fontFamily:'"Exo 2",sans-serif',
-        fontSize : '3vw',
+        fontSize : '2.5vw',
         [theme.breakpoints.up('md')]:{
             fontSize : '1.2vw'
         },
@@ -63,7 +64,7 @@ const useStyles = makeStyles(theme => createStyles({
         flexFlow : 'row',
         fontWeight : 'bold',
         justifyContent :'space-between',
-        fontSize : '3vw',
+        fontSize : '2.5vw',
         [theme.breakpoints.up('md')]:{
             fontSize : '1.2vw'
         },
