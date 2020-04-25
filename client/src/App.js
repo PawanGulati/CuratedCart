@@ -40,8 +40,6 @@ class App extends Component {
         setCurUser(null)
       }
     })
-
-    // addCollectionAndDocs('collections',shopDataArr.map(({items,title})=>({items,title})))
   }
 
   componentWillUnmount(){
