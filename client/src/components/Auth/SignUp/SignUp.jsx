@@ -40,7 +40,6 @@ export default class SignUp extends Component{
       }
       
       const {user} = await auth().createUserWithEmailAndPassword(email,password)
-      console.log(user);
       
       await createUserProfileDocument(user,{displayName:userName})
 

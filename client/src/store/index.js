@@ -8,7 +8,10 @@ import logger from 'redux-logger'
 import persistReducer from './root-reducer'
 
 // All middleware goes here 
-const middlewares = [logger]
+const middlewares = []
+if(process.env.NODE_ENV !=='production'){
+    middlewares.push(logger)
+}
 
 // Adding chrome REDUX dev tool functionality as middleware
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

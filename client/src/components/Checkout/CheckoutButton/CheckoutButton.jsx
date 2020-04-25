@@ -27,7 +27,7 @@ export default function CheckoutButton({price}) {
         alert(`Payment Successful, We are in business ${data.email}`);
     };
     const errorPayment = data => {
-        console.log(data);
+        // console.log(data);
         alert('Payment Error');
     };
 

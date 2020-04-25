@@ -9,8 +9,6 @@ const initial_state = {
 const collectionReducer = (state=initial_state,action)=>{
     switch (action.type) {
         case UPDATE_COLLECTIONS:
-            console.log("coll ",action.collections);
-            
             return {
                 ...state,
                 collections:{...action.collections}

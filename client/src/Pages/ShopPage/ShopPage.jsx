@@ -38,12 +38,10 @@ export default connect(null,mapDispatchToProps)(class ShopPage extends Component
                 }
             })
             
-            // console.log(modifiedCollections);
             const normalizedCollections = modifiedCollections.reduce((acc,collection)=>{
                 acc[collection.title.toLowerCase()] = collection
                 return acc
             },{})
-            // console.log(normalizedCollections);
 
             updateCollections(normalizedCollections)
 
