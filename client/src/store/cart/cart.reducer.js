@@ -1,4 +1,4 @@
-import {TOGGLE_DROP, ADD_ITEM,CLEAR_ITEM_FROM_CART,REMOVE_ITEM_FROM_CART, INCREASE_ITEM_IN_CART} from './cart.types'
+import {TOGGLE_DROP,HIDE_DROP,ADD_ITEM,CLEAR_ITEM_FROM_CART,REMOVE_ITEM_FROM_CART, INCREASE_ITEM_IN_CART} from './cart.types'
 
 const initial_state = {
     drop_hide:false,
@@ -47,6 +47,11 @@ const cartReducer = (state=initial_state,action) =>{
             return {
                 ...state,
                 drop_hide:!state.drop_hide
+            }
+        case HIDE_DROP:
+            return {
+                ...state,
+                drop_hide : false
             }
         case ADD_ITEM:
             return{

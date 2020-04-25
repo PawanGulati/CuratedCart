@@ -6,7 +6,7 @@ import SideDrawer from '../components/UI/SideDrawer/SideDrawer'
 
 export default class Layout extends Component {
     state={
-        showSide:true
+        showSide:false
     }
 
     handleToggleSide = ()=>{
@@ -16,7 +16,7 @@ export default class Layout extends Component {
     render() {
         return (
             <>
-                <ToolBar toggleSide={this.handleToggleSide}/>
+                <ToolBar toggleSide={this.handleToggleSide} />
                 <SideDrawer show={this.state.showSide} toggleSide={this.handleToggleSide}/>
                 {this.props.children}
             </>

@@ -3,6 +3,7 @@ import './App.css';
 import {Switch,Route, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setCurUser} from './store/user/user.actions'
+import {hideDrop} from './store/cart/cart.action'
 
 import Layout from './containers/Layout';
 import HomePage from './Pages/HomePage/HomePage'
@@ -17,13 +18,15 @@ import Checkout from './Pages/CheckoutPage/Checkout';
 import { selectCollections } from './store/shop/collection/collection.selector';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './store/user/user.selector';
+import Orderconfirmation from '../../client/src/components/UI/TickMark/TickMark'
+
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    const {setCurUser,shopDataArr} = this.props
-
+    const {setCurUser,shopDataArr,hideDrop} = this.props
+    hideDrop();
     this.unsubscribeFromAuth = auth().onAuthStateChanged(async user =>{
       
       if(user){
@@ -57,6 +60,7 @@ class App extends Component {
             <Route exact path='/signin' render={()=><SignInPage currentUser={this.props.currentUser}/>}/>
             <Route exact path='/checkout' component={Checkout}/>
             <Route path='/shop' component={ShopPage} />
+            <Route path='/orderconfirmation' component={Orderconfirmation}/>
             <Route exact path='/' component={HomePage} />
             <Route render={()=><Redirect component={HomePage}/>}/>
           </Switch>
@@ -68,7 +72,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch =>({
-  setCurUser:user => dispatch(setCurUser(user))
+  setCurUser:user => dispatch(setCurUser(user)),
+  hideDrop : ()=> dispatch(hideDrop())
 })
 
 const mapStateToProps = createStructuredSelector({

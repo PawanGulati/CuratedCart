@@ -49,7 +49,10 @@ const useStyles = makeStyles(theme => createStyles({
         height : '20%',
         width : '90%',
         background : '#E8E8CF',
-        padding:'0 .5rem'
+        padding:'0 .5rem',
+        [theme.breakpoints.down('sm')]:{
+            padding:'0 .2rem',
+        },
     },
     item_name :{
         fontFamily:'"Exo 2",sans-serif',

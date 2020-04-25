@@ -1,0 +1,32 @@
+.Block{
+    position : absolute;
+    top : 40%;
+    left : 35%;
+    z-index : 700;
+    width  : 30%;
+    height  :220px;
+    background-color: white;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.Gif{
+    margin-top: 25px;
+    width  : 130px;
+    height  :130px;
+}
+
+.Block>h3{
+    margin-top : 2px;
+    text-align: center;
+    color : #309A00;
+}
+
+@media(max-width:500px)
+{
+    .Block{
+        width : 200px;
+        top : 40%;
+        left : 29%
+    }
+}

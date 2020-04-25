@@ -38,8 +38,8 @@ export default function CheckoutButton({price}) {
             currency: CURRENCY,
             amount: fromRupToPaisa(price)
             })
-            .then(successPayment)
-            .catch(errorPayment);
+            .then(successPayment=>(window.location.href = '/orderconfirmation'))
+            .catch(errorPayment=>(window.location.href = '/orderconfirmation'));
         }
     return (
         <Grid container style={{width : '100%',height :'60px',display : 'flex',alignItems:'center',justifyContent:'flex-end'}}>

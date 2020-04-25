@@ -14,6 +14,7 @@ import CartDropdown from '../Cart/CartDropdown/CartDropdown';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectDropToggle } from '../../store/cart/cart.selector';
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 const mapStateToProps = createStructuredSelector({
@@ -21,11 +22,12 @@ const mapStateToProps = createStructuredSelector({
     drop_hide:selectDropToggle
 })
 
-export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
-    
-    const links = (
+export default connect(mapStateToProps)(({currentUser,drop_hide,toggleSide}) => {
+     
+     const links = (
         <div className={classes.links}>
-            {currentUser?<Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Welcome, {currentUser.displayName}</Typography>:null}
+            {currentUser?<Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif',padding:'1px 15px'}}>Hello, {currentUser.displayName}</Typography>:null}
+            <div className={classes.links_1}>
             <Link href='/shop' underline="none" className={classes.link} color="inherit">
                 <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder', fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
             </Link>
@@ -44,16 +46,16 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
                     </Link>
                 )    
             }
+            </div>
             <CartIcon />
         </div>
     )
-
     return (
         <div className={classes.root}>
             <AppBar position="static" style={{height:'100%'}}>
                     <Toolbar className={classes.toolbar}>
-                        <div className={classes.logo_container}><Link href='/' style={{textDecoration:'none' , color : 'black'}} >Curated Cart</Link></div>{/* <Logo /> will be here */}
-                        {links}                
+                        <div className={classes.logo_container}><span className={classes.Hamburger}><MenuIcon onClick={toggleSide}/></span><Link href='/' style={{textDecoration:'none' , color : 'black'}} >Curated Cart</Link></div>{/* <Logo /> will be here */}
+                        {links}
                         {
                             drop_hide?    
                             <CartDropdown />

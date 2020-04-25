@@ -1,7 +1,11 @@
-import {TOGGLE_DROP, ADD_ITEM,CLEAR_ITEM_FROM_CART, REMOVE_ITEM_FROM_CART, INCREASE_ITEM_IN_CART} from './cart.types'
+import {TOGGLE_DROP, HIDE_DROP,ADD_ITEM,CLEAR_ITEM_FROM_CART, REMOVE_ITEM_FROM_CART, INCREASE_ITEM_IN_CART} from './cart.types'
 
 export const toggleDrop = () =>({
     type:TOGGLE_DROP
+})
+
+export const hideDrop =()=>({
+    type:HIDE_DROP
 })
 
 export const addCartItem = item =>({
