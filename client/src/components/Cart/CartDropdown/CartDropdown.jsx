@@ -6,7 +6,9 @@ import CartItem from '../CartItem/CartItem'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectCartItems, selectCartTotalPrice } from '../../../store/cart/cart.selector'
-import { toggleDrop } from '../../../store/cart/cart.action'
+import { toggleDrop , removeItemFromCart} from '../../../store/cart/cart.action'
+import {selectCurrentUser} from '../../../store/user/user.selector' 
+
 
 const useStyles = makeStyles(theme =>({
     cart_drop:{
@@ -60,10 +62,11 @@ const useStyles = makeStyles(theme =>({
 
 const mapStateToProps = createStructuredSelector({
     cartItems:selectCartItems,
-    cartTotalPrice:selectCartTotalPrice
+    cartTotalPrice:selectCartTotalPrice,
+    currentUser : selectCurrentUser
 })
 
-export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice,dispatch}) {
+export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice,currentUser,dispatch}) {
     const classes = useStyles();
     // let totalPrice=0;
     // const items = [];
@@ -79,6 +82,11 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
         // let history = useHistory()
         // history.push('/checkout')
         window.location.href = '/checkout'
+        dispatch(toggleDrop())
+    }
+
+    const onUnauthenticated = ()=>{
+        window.location.href = '/signin'
         dispatch(toggleDrop())
     }
   
@@ -100,13 +108,31 @@ export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTot
             <div className={classes.cart_items}>
             {
                 cartItems.map(item=>
-                    <CartItem key={item.id} {...item}/>)
+                    <CartItem key={item.id} {...item} Remove_Item={()=>dispatch(removeItemFromCart(item))}/>)
             }
         </div>
         <div className={classes.checkout}>
             <span>Total: ₹{cartTotalPrice.toLocaleString()}</span>
-            <Button variant='contained' color='primary' className={classes.check_butt} onClick={()=>onCheckout()}>Check Me Out</Button>
-        </div>
+            {
+                currentUser 
+                ?(<Button 
+                    variant='contained' 
+                    color='primary' 
+                    className={classes.check_butt} 
+                    onClick={()=>onCheckout()}>
+                    Check Me Out
+                    </Button>
+                )
+                :(<Button 
+                    variant='contained' 
+                    color='primary' 
+                    className={classes.check_butt} 
+                    onClick={()=>onUnauthenticated()}>
+                    Log In To Checkout
+                    </Button>
+                )
+            }
+            </div>
         </div>)
     }
 

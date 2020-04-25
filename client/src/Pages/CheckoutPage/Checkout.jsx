@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotalPrice, selectCartItemCount } from '../../store/cart/cart.selector';
 import { createStructuredSelector } from 'reselect';
 import { Grid, Typography } from '@material-ui/core';
+import {selectCurrentUser} from '../../store/user/user.selector'
 
 import CheckoutButton from '../../components/Checkout/CheckoutButton/CheckoutButton';
 import { clearItemFromCart, removeItemFromCart, increaseItemInCart } from '../../store/cart/cart.action';
@@ -82,7 +83,8 @@ const useStyles = makeStyles(theme=>({
 const mapStateToProps = createStructuredSelector({
     cartItems:selectCartItems,
     cartTotalPrice:selectCartTotalPrice,
-    cartItemCount:selectCartItemCount
+    cartItemCount:selectCartItemCount,
+    currentUser : selectCurrentUser
 })
 
 const mapDispatchToProps = dispatch =>({
@@ -94,50 +96,57 @@ const mapDispatchToProps = dispatch =>({
 export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTables(props) {
   const classes = useStyles();
 
-  const {cartItems,cartTotalPrice,cartItemCount,clearItemFromCart,removeItemFromCart,increaseItemInCart} = props
+  const {cartItems,cartTotalPrice,cartItemCount,clearItemFromCart,removeItemFromCart,increaseItemInCart,currentUser} = props
+  
+  let content = (
+    <div className={classes.root}>
+    <Container >
+        <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
+        <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+            <TableHead>
+            <TableRow>
+                <StyledTableCell>Product</StyledTableCell>
+                {/*<StyledTableCell align="right">Description</StyledTableCell>*/}
+                <StyledTableCell align="right">Quantity</StyledTableCell>
+                <StyledTableCell align="right">Price&nbsp;(₹)</StyledTableCell>
+                <StyledTableCell align="right">Remove</StyledTableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
+            {cartItems.map(item => (
+                <StyledTableRow key={item.id}>
+                    <StyledTableCell component="th" scope="item" className={classes.item_title}>
+                    {item.name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right" style={{fontWeight:'bold'}}>
+                      <span className={classes.arrow} onClick={()=>removeItemFromCart(item)}>&#10096;</span>
+                      {item.quantity}
+                      <span className={classes.arrow} onClick={()=>increaseItemInCart(item)}>&#10097;</span>
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
+                    <StyledTableCell align="right" className={classes.removeBut} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
+                </StyledTableRow>
+            ))}
+            <TableRow>
+                <TableCell rowSpan={3} />
+                <TableCell colSpan={2} align="right">Subtotal</TableCell>
+                <TableCell align="right">{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
+            </TableRow>
+            </TableBody>
+        </Table>
+        </TableContainer>
+        <CheckoutButton className={classes.payButton} price={cartTotalPrice}/>
+    </Container>  
+    </div>
+  )
 
-  return !cartItems?(<Redirect to='/'/>):(
-      <div className={classes.root}>
-      <Container >
-          <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
-          <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="customized table">
-              <TableHead>
-              <TableRow>
-                  <StyledTableCell>Product</StyledTableCell>
-                  {/*<StyledTableCell align="right">Description</StyledTableCell>*/}
-                  <StyledTableCell align="right">Quantity</StyledTableCell>
-                  <StyledTableCell align="right">Price&nbsp;(₹)</StyledTableCell>
-                  <StyledTableCell align="right">Remove</StyledTableCell>
-              </TableRow>
-              </TableHead>
-              <TableBody>
-              {cartItems.map(item => (
-                  <StyledTableRow key={item.id}>
-                      <StyledTableCell component="th" scope="item" className={classes.item_title}>
-                      {item.name}
-                      </StyledTableCell>
-                      <StyledTableCell align="right" style={{fontWeight:'bold'}}>
-                        <span className={classes.arrow} onClick={()=>removeItemFromCart(item)}>&#10096;</span>
-                        {item.quantity}
-                        <span className={classes.arrow} onClick={()=>increaseItemInCart(item)}>&#10097;</span>
-                      </StyledTableCell>
-                      <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
-                      <StyledTableCell align="right" className={classes.removeBut} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
-                  </StyledTableRow>
-              ))}
-              <TableRow>
-                  <TableCell rowSpan={3} />
-                  <TableCell colSpan={2} align="right">Subtotal</TableCell>
-                  <TableCell align="right">{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
-              </TableRow>
-              </TableBody>
-          </Table>
-          </TableContainer>
-          <CheckoutButton className={classes.payButton} price={cartTotalPrice}/>
-      </Container>  
-      </div>
-    )
+  if(cartItems.length!==0 && currentUser!==null)
+  {
+    return content 
+  }
+
+  else return <Redirect to='/'/>
 })
 
 

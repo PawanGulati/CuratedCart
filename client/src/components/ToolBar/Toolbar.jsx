@@ -22,22 +22,23 @@ const mapStateToProps = createStructuredSelector({
 })
 
 export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
-
+    
     const links = (
         <div className={classes.links}>
+            {currentUser?<Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Welcome {currentUser.displayName}</Typography>:null}
             <Link href='/shop' underline="none" className={classes.link} color="inherit">
                 <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder', fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
             </Link>
             <Link href='/#products' underline="none" className={classes.link} color="inherit">
                 <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Product</Typography>
             </Link>
-            {!currentUser?(
+            {currentUser!==null?(
                     <Link onClick={() =>auth().signOut() } underline="none" className={classes.link} color="inherit">
                         <ExitToAppIcon/>
                         <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Logout</Typography>
                     </Link>
                 ):(
-                    <Link href='/signup' underline="none" className={classes.link} color="inherit">
+                    <Link href='/signin' underline="none" className={classes.link} color="inherit">
                         <ExitToAppIcon/>
                         <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Login</Typography>
                     </Link>

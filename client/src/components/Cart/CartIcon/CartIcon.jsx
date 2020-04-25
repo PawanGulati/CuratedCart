@@ -42,7 +42,6 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps)(function CartIcon({dispatch,cartItemCount}) {
     const classes = useStyles()
-    console.log(cartItemCount);
     
     return (
         <div className={classes.cart_icon} onClick={()=>dispatch(toggleDrop())}>

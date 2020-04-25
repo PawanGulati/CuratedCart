@@ -55,7 +55,6 @@ export default class SignUp extends Component{
     } catch (error) {
       console.log(error);
     }
-    
   }
 
   render(){

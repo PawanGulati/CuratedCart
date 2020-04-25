@@ -16,6 +16,7 @@ import ScrollToTop from './hoc/ScrollToTop';
 import Checkout from './Pages/CheckoutPage/Checkout';
 import { selectCollections } from './store/shop/collection/collection.selector';
 import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from './store/user/user.selector';
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -24,6 +25,7 @@ class App extends Component {
     const {setCurUser,shopDataArr} = this.props
 
     this.unsubscribeFromAuth = auth().onAuthStateChanged(async user =>{
+      
       if(user){
         const userRef = await createUserProfileDocument(user)
 
@@ -35,7 +37,7 @@ class App extends Component {
         })
       }
       else{
-        setCurUser({currentUser:user})
+        setCurUser(null)
       }
     })
 
@@ -53,8 +55,8 @@ class App extends Component {
         <Layout>
         <ScrollToTop>
           <Switch>
-          <Route exact path='/signup' component={SignUpPage}/>
-          <Route exact path='/signin' component={SignInPage}/>
+          <Route exact path='/signup' render={()=><SignUpPage currentUser={this.props.currentUser}/>}/>
+          <Route exact path='/signin' render={()=><SignInPage currentUser={this.props.currentUser}/>}/>
           <Route exact path='/checkout' component={Checkout}/>
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/' component={HomePage} />
@@ -72,6 +74,7 @@ const mapDispatchToProps = dispatch =>({
 
 const mapStateToProps = createStructuredSelector({
   // shopDataArr:selectCollections
+  currentUser : selectCurrentUser
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
