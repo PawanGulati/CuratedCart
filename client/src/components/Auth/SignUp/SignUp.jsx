@@ -117,7 +117,7 @@ export default class SignUp extends Component{
                   fullWidth
                   name="confirm_password"
                   label="Confirm Password"
-                  type="confirm_password"
+                  type="password"
                   id="confirm_password"
                   autoComplete="off"
                   value={this.state.confirm_password}

@@ -46,4 +46,7 @@ snap{
 .textStyle{
     display: none;    
 }
+.SignUpPage::before{
+    opacity: .8;
+}
 }
