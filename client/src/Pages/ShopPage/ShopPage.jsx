@@ -58,7 +58,6 @@ export default connect(null,mapDispatchToProps)(class ShopPage extends Component
                 <Switch>
                     <Route exact path={match.path} render={(props)=><CollectionPreviewLoaded {...props} isLoading={this.state.isLoading} />} />
                     <Route path={`${match.path}/:category`} render={(props)=><CategoryPageLoaded {...props} isLoading={this.state.isLoading} />} />
-                    <Redirect component={ShopPage}/>
                 </Switch>
             </div>
         )

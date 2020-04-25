@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme =>({
         borderRadius : '8px',
         color : 'white',
         fontWeight : 'bolder',
-        fontSize :'17px'
+        fontSize :'13px'
     },
     checkout:{
         borderTop : '2px solid black',
@@ -68,15 +68,6 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps)(function CartDropdown({cartItems,cartTotalPrice,currentUser,dispatch}) {
     const classes = useStyles();
-    // let totalPrice=0;
-    // const items = [];
-    //     if(cartItems){
-    //         for(let item in cartItems)
-    //         {
-    //             items.push(cartItems[item]);
-    //             totalPrice = totalPrice + (cartItems[item].price)* (cartItems[item].quantity);
-    //         }
-    // }
 
     const onCheckout = ()=>{
         // let history = useHistory()

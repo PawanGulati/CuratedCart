@@ -9,4 +9,11 @@ export const selectCategories = createSelector(
     category => category.categories
 )
 
+export const selectCategoriesItemsArr = createSelector(
+    [selectCategories],
+    categories => categories.reduce((acc,category)=>{
+        acc.push(category.title.toLowerCase())
+        return acc
+    },[])
+)
 

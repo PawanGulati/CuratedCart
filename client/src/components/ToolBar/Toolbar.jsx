@@ -25,7 +25,7 @@ export default connect(mapStateToProps)(({currentUser,drop_hide}) => {
     
     const links = (
         <div className={classes.links}>
-            {currentUser?<Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Welcome {currentUser.displayName}</Typography>:null}
+            {currentUser?<Typography variant='body1' style={{margin:'2px',fontWeight:'bolder',fontFamily:'"Dosis",sans-serif'}}>Welcome, {currentUser.displayName}</Typography>:null}
             <Link href='/shop' underline="none" className={classes.link} color="inherit">
                 <Typography variant='body1' style={{margin:'2px',fontWeight:'bolder', fontFamily:'"Dosis",sans-serif'}}>Shop</Typography>
             </Link>

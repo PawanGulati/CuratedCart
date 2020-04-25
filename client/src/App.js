@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Switch,Route} from 'react-router-dom'
+import {Switch,Route, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setCurUser} from './store/user/user.actions'
 
@@ -55,11 +55,12 @@ class App extends Component {
         <Layout>
         <ScrollToTop>
           <Switch>
-          <Route exact path='/signup' render={()=><SignUpPage currentUser={this.props.currentUser}/>}/>
-          <Route exact path='/signin' render={()=><SignInPage currentUser={this.props.currentUser}/>}/>
-          <Route exact path='/checkout' component={Checkout}/>
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/' component={HomePage} />
+            <Route exact path='/signup' render={()=><SignUpPage currentUser={this.props.currentUser}/>}/>
+            <Route exact path='/signin' render={()=><SignInPage currentUser={this.props.currentUser}/>}/>
+            <Route exact path='/checkout' component={Checkout}/>
+            <Route path='/shop' component={ShopPage} />
+            <Route exact path='/' component={HomePage} />
+            <Route render={()=><Redirect component={HomePage}/>}/>
           </Switch>
           </ScrollToTop>
         </Layout>

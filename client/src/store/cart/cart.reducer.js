@@ -25,7 +25,7 @@ const clearItemFromCart = (cartItems,cartItem) =>{
 }
 
 const removeItemFromCart = (cartItems,cartItem) =>{
-    if(cartItem.quantity == 1) return cartItems.filter(item => item.id !== cartItem.id)
+    if(cartItem.quantity === 1) return cartItems.filter(item => item.id !== cartItem.id)
     return cartItems.map(item =>{
         if(item.id === cartItem.id){
             return {...item,quantity:item.quantity-1}
