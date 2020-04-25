@@ -42,6 +42,11 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles(theme=>({
     table: {
         minWidth: 700,
+        minHeight:450,
+        [theme.breakpoints.down('sm')]:{
+          minHeight:400
+
+        }
     },
     root:{
         padding:'2rem',
@@ -51,9 +56,19 @@ const useStyles = makeStyles(theme=>({
 
     },
     arrow:{
-        fontSize:'1.3rem',
+        fontSize:'1rem',
         margin:'.5rem',
-        cursor:'pointer'
+        cursor:'pointer',
+        [theme.breakpoints.down('sm')]:{
+          fontSize:'1rem'
+        }
+    },
+    arrowDiv:{
+      fontWeight : '500',
+      fontFamily : '"Exo 2",sans-serif',
+      [theme.breakpoints.down('sm')]:{
+        // fontSize:'15px'
+      }
     },
     payButton:{
         marginTop:"2rem",
@@ -66,17 +81,20 @@ const useStyles = makeStyles(theme=>({
       fontWeight : 'bold'
     },
     item_title:{
-      display : 'flex',
-      alignItems : 'center',
       fontSize : '20px',
       fontWeight : '500',
       fontFamily : '"Exo 2",sans-serif',
-
+      [theme.breakpoints.down('sm')]:{
+        fontSize:'15px'
+      }
     },
     removeBut:{
       fontWeight:'bold',
       cursor:'pointer',
-      fontSize:'1.5rem'  
+      fontSize:'1.5rem',  
+      [theme.breakpoints.down('sm')]:{
+        fontSize:'1rem'  
+      }
     }
 }));
 
@@ -103,7 +121,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTa
     <Container >
         <Typography variant='h5' className={classes.page_title}>My Shopping Bag{` (${cartItemCount} items)`}</Typography>
         <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
+        <Table size="small" stickyHeader className={classes.table} aria-label="customized table">
             <TableHead>
             <TableRow>
                 <StyledTableCell>Product</StyledTableCell>
@@ -119,19 +137,19 @@ export default connect(mapStateToProps,mapDispatchToProps)(function CustomizedTa
                     <StyledTableCell component="th" scope="item" className={classes.item_title}>
                     {item.name}
                     </StyledTableCell>
-                    <StyledTableCell align="right" style={{fontWeight:'bold'}}>
+                    <StyledTableCell align="right" className={classes.arrowDiv}>
                       <span className={classes.arrow} onClick={()=>removeItemFromCart(item)}>&#10096;</span>
                       {item.quantity}
                       <span className={classes.arrow} onClick={()=>increaseItemInCart(item)}>&#10097;</span>
                     </StyledTableCell>
-                    <StyledTableCell align="right">{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
+                    <StyledTableCell align="right" className={classes.item_title}>{`₹ ${(item.price*item.quantity).toFixed(2)}`}</StyledTableCell>
                     <StyledTableCell align="right" className={classes.removeBut} onClick={()=>clearItemFromCart(item)}>&#10008;</StyledTableCell>
                 </StyledTableRow>
             ))}
             <TableRow>
                 <TableCell rowSpan={3} />
                 <TableCell colSpan={2} align="right">Subtotal</TableCell>
-                <TableCell align="right">{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
+                <TableCell align="right" style={{fontWeight:'bold'}}>{`₹ ${cartTotalPrice.toFixed(2)}`}</TableCell>
             </TableRow>
             </TableBody>
         </Table>
