@@ -1,7 +1,7 @@
 .Block{
     position : absolute;
-    top : 40%;
-    left : 35%;
+    top : 35%;
+    left : 34%;
     z-index : 700;
     width  : 30%;
     height  :220px;
@@ -26,7 +26,7 @@
 {
     .Block{
         width : 200px;
-        top : 40%;
-        left : 29%
+        top : 35%;
+        left : 25%
     }
 }

@@ -96,19 +96,19 @@ export default connect(mapStateToProps)(function SideDrawer({show,toggleSide,cur
     const classes = useStyles()
     const links =(<div className={classes.links}> 
         <Link href='/shop' underline="none" className={classes.link} color="inherit">
-            <Typography variant='body1' className={classes.textStyle}>Shop</Typography>
+            <Typography variant='body1' className={classes.textStyle} onClick={toggleSide}>Shop</Typography>
         </Link>
         <Link href='/#products' underline="none" className={classes.link} color="inherit">
-            <Typography variant='body1' className={classes.textStyle}>Product</Typography>
+            <Typography variant='body1' className={classes.textStyle} onClick={toggleSide}>Product</Typography>
         </Link>
         {
             currentUser!==null?(
                 <Link onClick={() =>auth().signOut() } underline="none" className={classes.link} color="inherit">
-                    <Typography variant='body1' className={classes.textStyle}>Logout</Typography>
+                    <Typography variant='body1' className={classes.textStyle} onClick={toggleSide}>Logout</Typography>
                 </Link>
             ):(
                 <Link href='/signin' underline="none" className={classes.link} color="inherit">
-                    <Typography variant='body1' className={classes.textStyle}>Login</Typography>
+                    <Typography variant='body1' className={classes.textStyle} onClick={toggleSide}>Login</Typography>
                 </Link>
             )    
         }
